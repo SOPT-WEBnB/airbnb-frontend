@@ -13,7 +13,9 @@ const GlobalStyle = createGlobalStyle`
   #root {
     display: flex;
     flex-direction: column;
+    max-width: 37.5rem;
     min-height: 100vh;
+    margin: 0 auto;
   }
 
   html {
@@ -24,14 +26,15 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body, button {
-    /* font-family 지정 */
+  body, button, input {
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
   }
   
   button {
     cursor: pointer;
     border: none;
     outline: none;
+    padding: 0;
   }
   
   a {
