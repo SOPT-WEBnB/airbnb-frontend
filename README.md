@@ -10,22 +10,49 @@
 
 ## 🪄 협업 방식
 ### ⌨️ Code Convention
+<details>
+<summary>토글 버튼을 클릭하면 확인할 수 있습니다.</summary>
+
 - ESLint, prettier 사용
-- 폴더명 소문자로 시작
-- 배열과 관련된 변수명은 __List (ex. reservationList)
-- 변수, 함수 : Camel case 사용
-- 함수 이름은 동사로 시작
-- 함수는 모두 `const 함수명 = () => {}` 형식으로 작성
+- 폴더명은 소문자로 시작
 - Event handler 이름 : on으로 시작
-- 컴포넌트를 정의한 파일 : Pascal case 사용
-- 컴포넌트는 모두 `function 컴포넌트명() {}` 형식으로 작성
-- styled-components : 코드 하단에 작성, px 대신 rem 사용, 컴포넌트 이름 앞에 Styled 붙여주기
+- 배열과 관련된 변수명은 `__List` (ex. reservationList)
+- 변수, 함수 : Camel case 사용
+- 함수
+  - 함수명은 동사로 시작
+  - `const 함수명 = () => {}` 형식으로 작성
+- 컴포넌트
+  - 컴포넌트를 정의한 파일 : Pascal case 사용
+  - `function 컴포넌트명() {}` 형식으로 작성
+- styled-components
+  - 코드 하단에 작성
+  - px 대신 rem 사용 (ex. 12px로 설정하고 싶다면? 1.2rem이라고 작성하면 된다.)
+  - 항상 맨 앞에 `Styled` 붙여주기 
+  - 최상단 태그 이름은 `Styled[컴포넌트명]`
+    ```javascript
+    function Home() {
+      return (
+        <StyledHome>
+        ...
+        </StyledHome>
+      );
+    }
+    ```
+  - 색상은 항상 아래처럼 ThemeProvider 활용해서 설정
+    ```javascript
+    button {
+      background-color: ${(props) => props.theme.colors.airPink};
+      color: ${(props) => props.theme.colors.airWhite};
+    }
+    ```
 - API 호출 함수 : api.js에 작성하기
 - 피그마에서 svg를 export해서 `src/assets/icons` 혹은 `src/assets/images`에 저장하고, `src/assets/index.js`에 아래처럼 추가해 사용
   ```javascript
   export { default as icSample } from './icons/ic_sample.svg';
   export { default as imgSample } from './images/img_sample.svg';
   ```
+</details>
+
   
 ### ✉️ Commit Message Convention
 - init: 개발 환경 초기 세팅
