@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { client } from 'libs/api';
+import RoomHeader from 'components/room/RoomHeader';
 import RoomInfo from 'components/room/RoomInfo';
 import RoomFooter from 'components/room/RoomFooter';
 import styled from 'styled-components';
@@ -24,6 +25,7 @@ function Room() {
 
   return (
     <StyledRoom>
+      <RoomHeader />
       <img src={image} />
       <RoomInfo {...roomInfo} />
       <RoomFooter price={price?.toLocaleString()} />
@@ -37,8 +39,4 @@ const StyledRoom = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
-  div:nth-child(2) {
-    flex: 1;
-  }
 `;
