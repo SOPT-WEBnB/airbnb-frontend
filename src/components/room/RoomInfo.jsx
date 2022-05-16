@@ -50,6 +50,7 @@ export default RoomInfo;
 
 const StyledRoomInfo = styled.div`
   padding: 0.2rem 2.2rem;
+  flex: 1;
 
   & > div {
     padding: 2.2rem 0;

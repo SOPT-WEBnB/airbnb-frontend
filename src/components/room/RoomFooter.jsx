@@ -18,7 +18,6 @@ const StyledRoomFooter = styled.div`
   bottom: 0;
   display: flex;
   width: 100%;
-  max-width: 42rem;
   height: 7.4rem;
   padding: 1.5rem 2.2rem;
   align-items: center;
