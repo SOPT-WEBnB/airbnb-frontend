@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import HomeInfo from 'components/home/HomeInfo';
-import HomeNavBar from 'components/home/HomeNavBar';
+import HomeFooter from 'components/home/HomeFooter';
 
 function Home() {
   return (
     <StyledHome>
       <HomeInfo />
-      <HomeNavBar />
+      <HomeFooter />
     </StyledHome>
   );
 }
@@ -14,22 +14,15 @@ function Home() {
 export default Home;
 
 const StyledHome = styled.div`
-  position: absolute;
-  width: 37.6rem;
-  height: 81.2rem;
-  margin: auto;
-
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  min-height: 100vh;
   align-items: center;
 
   h1 {
-    position: absolute;
-    width: 9.2rem;
-    height: 2.4rem;
-    left: 2.2rem;
-    top: 8.4rem;
+    margin-right: 23.9rem;
+    margin-top: 8.4rem;
+    margin-bottom: 2.2rem;
 
     font-weight: 600;
     font-size: 2rem;
@@ -37,11 +30,8 @@ const StyledHome = styled.div`
   }
 
   h2 {
-    position: absolute;
-    width: 9.2rem;
-    height: 2.4rem;
-    left: 2.2rem;
-    top: 41.9rem;
+    margin-right: 23.9rem;
+    margin-top: 4.8rem;
 
     font-weight: 600;
     font-size: 2rem;

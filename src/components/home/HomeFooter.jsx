@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function NavBar() {
   return (
-    <StyledNavBar>
+    <StyledFooter>
       <StyledNavToggle>
         <img src={icSearch} />
         <span>둘러보기</span>
@@ -29,31 +29,31 @@ function NavBar() {
         <img src={icProfile} alt="" />
         <span>프로필</span>
       </StyledNavToggle>
-    </StyledNavBar>
+    </StyledFooter>
   );
 }
 
 export default NavBar;
 
-const StyledNavBar = styled.footer`
+const StyledFooter = styled.footer`
+  position: sticky;
+  bottom: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  width: 100%;
+  padding: 0.9rem 2.15rem 1rem 2.15rem;
   align-items: center;
-  padding: 0.9rem 2.2rem 1rem;
-  gap: 4.3rem;
+  justify-content: space-between;
 
-  position: absolute;
-  width: 37.5rem;
   height: 5.8rem;
-  left: 0rem;
-  top: 75.4rem;
 
   background: ${(props) => props.theme.colors.airWhite};
-  border: 1px solid ${(props) => props.theme.colors.airGray2};
+  border: 0.1rem solid ${(props) => props.theme.colors.airGray2};
 `;
 
 const StyledNavToggle = styled.div`
+  width: 4.4rem;
+  height: 3.9rem;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
