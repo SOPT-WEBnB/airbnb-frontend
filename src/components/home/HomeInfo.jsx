@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { icHand, imgChuncheon, imgSokcho, imgDaejeon } from 'assets';
 
-function BookingBox() {
+function HomeInfo() {
   return (
     <>
       <h1>예정된 예약</h1>
@@ -36,7 +36,7 @@ function BookingBox() {
   );
 }
 
-export default BookingBox;
+export default HomeInfo;
 
 const StyledFirstSection = styled.section`
   display: flex;
