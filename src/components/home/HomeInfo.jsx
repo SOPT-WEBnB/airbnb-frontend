@@ -94,23 +94,6 @@ const StyledSearchButton = styled.button`
   line-height: 1.9rem;
 `;
 
-// const StyledPrevious = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   flex-wrap: wrap;
-//   row-gap: 1.6rem;
-
-//   position: absolute;
-//   width: 25.9rem;
-//   height: 22.4rem;
-//   left: 2.2rem;
-//   top: 46.5rem;
-
-//   img {
-//     width: 6.4rem;
-//     height: 6.4rem;
-//   }
-// `;
 const StyledPreiousImg = styled.div`
   position: absolute;
   width: 6.4rem;
