@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import HomeInfo from 'home/HomeInfo';
-import HomeNavBar from 'home/HomeNavBar';
+import HomeInfo from 'components/home/HomeInfo';
+import HomeNavBar from 'components/home/HomeNavBar';
 
 function Home() {
   return (

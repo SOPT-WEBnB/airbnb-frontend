@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { icHand } from 'assets';
+import { icHand, imgChuncheon, imgSokcho, imgDaejeon } from 'assets';
 
 function BookingBox() {
   return (
@@ -11,14 +11,25 @@ function BookingBox() {
         <StyledSearchButton>숙소 검색하기</StyledSearchButton>
       </StyledBookingBox>
       <h2>이전 여행지</h2>
-      <StyledPrevious>
-        <p>Geunhwa-dong,Chuncheon</p>
-        <span>2022년 1월 12일 - 2022년 1월 14일</span>
-        <p>joyang-dong,Sokcho</p>
-        <span>2021년 12월 5일 - 2021년 12월 6일</span>
-        <p>jayang-dong,Daejeon</p>
-        <span>2021년 6월 17일 - 2021년 7월 1일</span>
-      </StyledPrevious>
+      <StyledPreiousImg>
+        <img src={imgChuncheon} />
+        <img src={imgSokcho} />
+        <img src={imgDaejeon} />
+      </StyledPreiousImg>
+      <StyledPreviousInfo>
+        <div>
+          <p>Geunhwa-dong,Chuncheon</p>
+          <span>2022년 1월 12일 - 2022년 1월 14일</span>
+        </div>
+        <div>
+          <p>joyang-dong,Sokcho</p>
+          <span>2021년 12월 5일 - 2021년 12월 6일</span>
+        </div>
+        <div>
+          <p>jayang-dong,Daejeon</p>
+          <span>2021년 6월 17일 - 2021년 7월 1일</span>
+        </div>
+      </StyledPreviousInfo>
     </>
   );
 }
@@ -83,4 +94,63 @@ const StyledSearchButton = styled.button`
   line-height: 1.9rem;
 `;
 
-const StyledPrevious = styled.div``;
+// const StyledPrevious = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   flex-wrap: wrap;
+//   row-gap: 1.6rem;
+
+//   position: absolute;
+//   width: 25.9rem;
+//   height: 22.4rem;
+//   left: 2.2rem;
+//   top: 46.5rem;
+
+//   img {
+//     width: 6.4rem;
+//     height: 6.4rem;
+//   }
+// `;
+const StyledPreiousImg = styled.div`
+  position: absolute;
+  width: 6.4rem;
+  height: 22.4rem;
+  left: 2.2rem;
+  top: 46.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  img {
+    width: 6.4rem;
+    height: 6.4rem;
+  }
+`;
+
+const StyledPreviousInfo = styled.div`
+  position: absolute;
+  width: 18.1rem;
+  height: 19.4rem;
+  left: 10rem;
+  top: 48rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4.6rem;
+
+  p {
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+
+    color: ${(props) => props.theme.colors.airBlack};
+  }
+  span {
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+
+    color: ${(props) => props.theme.colors.airGray1};
+  }
+`;
