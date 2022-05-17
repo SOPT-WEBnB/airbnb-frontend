@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'AirbnbCereal_W_Md';
+  src: url('./AirbnbCereal_W_Md.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AirbnbCereal_W_Bk';
+  src: url('./AirbnbCereal_W_Bk.otf') format('truetype');
+}
