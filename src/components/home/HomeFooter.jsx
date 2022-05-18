@@ -1,39 +1,39 @@
 import styled from 'styled-components';
-import { icTravel, icWish, icSearch, icMassage, icProfile } from 'assets';
+import { icTravel, icWish, icSearch, icMessage, icProfile } from 'assets';
 import { Link } from 'react-router-dom';
 
-function NavBar() {
+function HomeFooter() {
   return (
     <StyledFooter>
       <StyledNavToggle>
         <img src={icSearch} />
         <span>둘러보기</span>
       </StyledNavToggle>
-      <Link to={'./Wish'}>
+      <Link to={'/Wish'}>
         <StyledNavToggle>
           <img src={icWish} />
           <span>위시리스트</span>
         </StyledNavToggle>
       </Link>
-      <Link to={'./'}>
+      <Link to={'/'}>
         <StyledNavToggle>
           <img src={icTravel} />
           <span>여행</span>
         </StyledNavToggle>
       </Link>
       <StyledNavToggle>
-        <img src={icMassage} />
+        <img src={icMessage} />
         <span>메세지</span>
       </StyledNavToggle>
       <StyledNavToggle>
-        <img src={icProfile} alt="" />
+        <img src={icProfile} />
         <span>프로필</span>
       </StyledNavToggle>
     </StyledFooter>
   );
 }
 
-export default NavBar;
+export default HomeFooter;
 
 const StyledFooter = styled.footer`
   position: sticky;
@@ -47,7 +47,7 @@ const StyledFooter = styled.footer`
   height: 5.8rem;
 
   background: ${(props) => props.theme.colors.airWhite};
-  border: 0.1rem solid ${(props) => props.theme.colors.airGray2};
+  border-top: 0.1rem solid ${(props) => props.theme.colors.airGray2};
 `;
 
 const StyledNavToggle = styled.div`
