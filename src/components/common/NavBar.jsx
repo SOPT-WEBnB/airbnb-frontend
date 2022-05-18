@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { icTravel, icWish, icSearch, icMessage, icProfile } from 'assets';
 import { Link } from 'react-router-dom';
 
-function HomeFooter() {
+function NavBar() {
   return (
     <StyledFooter>
       <StyledNavToggle>
@@ -33,7 +33,7 @@ function HomeFooter() {
   );
 }
 
-export default HomeFooter;
+export default NavBar;
 
 const StyledFooter = styled.footer`
   position: sticky;
