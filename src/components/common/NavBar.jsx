@@ -9,13 +9,13 @@ function HomeFooter() {
         <img src={icSearch} />
         <span>둘러보기</span>
       </StyledNavToggle>
-      <Link to={'/Wish'}>
+      <Link to="/Wish">
         <StyledNavToggle>
           <img src={icWish} />
           <span>위시리스트</span>
         </StyledNavToggle>
       </Link>
-      <Link to={'/'}>
+      <Link to="/">
         <StyledNavToggle>
           <img src={icTravel} />
           <span>여행</span>

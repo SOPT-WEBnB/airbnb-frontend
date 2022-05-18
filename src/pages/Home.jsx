@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import HomeInfo from 'components/home/HomeInfo';
-import HomeFooter from 'components/home/HomeFooter';
+import NavBar from 'components/common/NavBar';
 
 function Home() {
   return (
     <StyledHome>
       <HomeInfo />
-      <HomeFooter />
+      <NavBar />
     </StyledHome>
   );
 }
