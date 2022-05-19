@@ -32,8 +32,8 @@ const StyledModalBackground = styled.div`
 
 const StyledBottomSheet = styled.div`
   z-index: 2;
-  position: absolute;
-  width: 100%;
+  position: fixed;
+  width: min(42rem, 100vw);
   height: fit-content;
   bottom: 0;
   border-radius: 1rem 1rem 0 0;
