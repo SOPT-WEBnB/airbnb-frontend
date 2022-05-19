@@ -14,6 +14,7 @@ function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/room/:id" element={<Room />} />
+        <Route path="/wish" element={<Wish />} />
         <Route path="/*" element={<p>Page Not Found</p>} />
       </Routes>
     </BrowserRouter>

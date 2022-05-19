@@ -10,7 +10,6 @@ function WishList() {
   const getCategoryList = async () => {
     const { data } = await client.get('/category');
     setCategoryList(data);
-    console.log(data);
   };
 
   useEffect(() => {
@@ -19,8 +18,8 @@ function WishList() {
 
   return (
     <StyledCategory>
-      <WishListHeader></WishListHeader>
-      <WishListInfo list={categoryList}></WishListInfo>
+      <WishListHeader />
+      <WishListInfo list={categoryList} />
     </StyledCategory>
   );
 }

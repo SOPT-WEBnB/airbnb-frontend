@@ -1,20 +1,16 @@
 import styled from 'styled-components';
 
-function WishListInfo(categoryList) {
-  const list = categoryList.list;
-
-  const getCategoryInfo = () => {
-    return list.map(({ id, image, title }) => (
-      <li key={id}>
-        <img src={image}></img>
-        <span>{title}</span>
-      </li>
-    ));
-  };
-
+function WishListInfo({ list }) {
   return (
     <StyledWishListInfo>
-      <StyledCategoryInfo>{getCategoryInfo()}</StyledCategoryInfo>
+      <StyledCategoryInfo>
+        {list.map(({ id, image, title }) => (
+          <li key={id}>
+            <img src={image} />
+            <span>{title}</span>
+          </li>
+        ))}
+      </StyledCategoryInfo>
     </StyledWishListInfo>
   );
 }
@@ -22,8 +18,7 @@ function WishListInfo(categoryList) {
 export default WishListInfo;
 
 const StyledWishListInfo = styled.div`
-  border-style: dashed;
-  padding: 10.4rem 2.2rem;
+  padding: 0 2.2rem;
   gap: 1.4rem;
 `;
 
@@ -49,6 +44,7 @@ const StyledCategoryInfo = styled.div`
   img {
     width: 5.8rem;
     height: 5.8rem;
-    border-radius: 8px;
+    border-radius: 0.8rem;
+    object-fit: cover;
   }
 `;
