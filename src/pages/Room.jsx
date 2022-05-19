@@ -140,6 +140,6 @@ const StyledNewWishList = styled.div`
   }
 
   & > button:disabled {
-    background-color: ${(props) => props.theme.colors.airGray2};
+    background-color: ${(props) => props.theme.colors.airGray1};
   }
 `;

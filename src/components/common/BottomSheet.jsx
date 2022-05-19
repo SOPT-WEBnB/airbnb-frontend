@@ -45,7 +45,7 @@ const StyledBottomSheetHeader = styled.div`
   padding: 1.1rem 2.2rem 0.9rem 2.2rem;
   display: flex;
   align-items: center;
-  border-bottom: 0.1rem ${(props) => props.theme.colors.airGray1};
+  border-bottom: 0.1rem solid ${(props) => props.theme.colors.airGray1};
 
   & > img {
     cursor: pointer;
