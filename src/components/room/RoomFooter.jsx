@@ -1,12 +1,15 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-function RoomFooter({ price }) {
+function RoomFooter({ price, host, title }) {
   return (
     <StyledRoomFooter>
       <div>
         <span>₩{price}</span> / 박
       </div>
-      <button>예약하기</button>
+      <Link to={'/'} state={{ title: { title }, host: { host } }}>
+        <button>예약하기</button>
+      </Link>
     </StyledRoomFooter>
   );
 }

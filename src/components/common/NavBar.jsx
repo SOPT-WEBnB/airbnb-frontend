@@ -9,7 +9,7 @@ function NavBar() {
         <img src={icSearch} />
         <span>둘러보기</span>
       </StyledNavToggle>
-      <Link to="/Wish">
+      <Link to="/Wishlist">
         <StyledNavToggle>
           <img src={icWish} />
           <span>위시리스트</span>
@@ -67,6 +67,7 @@ const StyledNavToggle = styled.div`
   &:hover {
     span {
       color: ${(props) => props.theme.colors.airBlack};
+      font-weight: bold;
     }
   }
   img {

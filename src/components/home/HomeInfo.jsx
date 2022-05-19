@@ -1,15 +1,12 @@
 import styled from 'styled-components';
-import { icHand, imgChuncheon, imgSokcho, imgDaejeon } from 'assets';
+import { imgChuncheon, imgSokcho, imgDaejeon } from 'assets';
+import FirstSection from './FirstSection';
 
-function HomeInfo() {
+function HomeInfo({ title, host }) {
   return (
     <>
       <h1>예정된 예약</h1>
-      <StyledFirstSection>
-        <StyledIcHand src={icHand} />
-        <span>아직 예약된 여행이 없습니다!</span>
-        <StyledSearchButton>숙소 검색하기</StyledSearchButton>
-      </StyledFirstSection>
+      <FirstSection title={title} host={host} />
       <h2>이전 여행지</h2>
       <StyledSecondSection>
         <StyledImg>
@@ -19,15 +16,15 @@ function HomeInfo() {
         </StyledImg>
         <StyledInfo>
           <div>
-            <p>Geunhwa-dong,Chuncheon</p>
+            <p>Geunhwa-dong, Chuncheon</p>
             <span>2022년 1월 12일 - 2022년 1월 14일</span>
           </div>
           <div>
-            <p>joyang-dong,Sokcho</p>
+            <p>joyang-dong, Sokcho</p>
             <span>2021년 12월 5일 - 2021년 12월 6일</span>
           </div>
           <div>
-            <p>jayang-dong,Daejeon</p>
+            <p>jayang-dong, Daejeon</p>
             <span>2021년 6월 17일 - 2021년 7월 1일</span>
           </div>
         </StyledInfo>
@@ -37,51 +34,6 @@ function HomeInfo() {
 }
 
 export default HomeInfo;
-
-const StyledFirstSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  box-sizing: border-box;
-  width: 33.1rem;
-  height: 24.1rem;
-
-  background: #ffffff;
-  border: 1px solid ${(props) => props.theme.colors.airGray2};
-  border-radius: 1rem;
-
-  button {
-    background-color: ${(props) => props.theme.colors.airPink};
-    color: ${(props) => props.theme.colors.airWhite};
-  }
-
-  span {
-    margin-top: 2rem;
-
-    font-weight: 600;
-    font-size: 1.6rem;
-    line-height: 1.9rem;
-  }
-`;
-
-const StyledIcHand = styled.img`
-  width: 4rem;
-  height: 4rem;
-  margin-top: 4.8rem;
-`;
-
-const StyledSearchButton = styled.button`
-  margin-top: 4.8rem;
-
-  width: 28.6rem;
-  height: 4.4rem;
-  border-radius: 6px;
-
-  font-weight: 600;
-  font-size: 1.6rem;
-  line-height: 1.9rem;
-`;
 
 const StyledSecondSection = styled.section`
   display: flex;
@@ -111,7 +63,6 @@ const StyledImg = styled.div`
 const StyledInfo = styled.div`
   font-family: 'AirbnbCereal_W_Md';
 
-  width: 18.1rem;
   height: 22.4rem;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;

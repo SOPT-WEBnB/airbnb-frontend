@@ -1,11 +1,25 @@
 import styled from 'styled-components';
 import HomeInfo from 'components/home/HomeInfo';
 import NavBar from 'components/common/NavBar';
+import { useLocation } from 'react-router-dom';
 
 function Home() {
+  let title;
+  let host;
+
+  try {
+    const location = useLocation();
+    const state = location.state;
+    title = state.title.title;
+    host = state.host.host;
+  } catch (e) {
+    title = 'unBooked';
+    host = 'unBooked';
+  }
+
   return (
     <StyledHome>
-      <HomeInfo />
+      <HomeInfo title={title} host={host} />
       <NavBar />
     </StyledHome>
   );
