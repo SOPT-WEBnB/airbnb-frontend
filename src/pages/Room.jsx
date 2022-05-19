@@ -6,12 +6,14 @@ import RoomInfo from 'components/room/RoomInfo';
 import RoomFooter from 'components/room/RoomFooter';
 import BottomSheet from 'components/common/BottomSheet';
 import styled from 'styled-components';
+import { icPlus } from 'assets';
 
 function Room() {
   const { id: roomID } = useParams();
   const [roomInfo, setRoomInfo] = useState([]);
   const [isDisabled, setDisabled] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(true);
+  const [title, setTitle] = useState('위시리스트');
   const [name, setName] = useState('');
   const navigate = useNavigate();
 
@@ -19,10 +21,6 @@ function Room() {
     const { data } = await client.get('/room');
     if (roomID > data.length) navigate('/');
     setRoomInfo(data[roomID - 1]);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
   };
 
   useEffect(() => {
@@ -38,20 +36,31 @@ function Room() {
       <RoomInfo {...roomInfo} />
       <RoomFooter price={price?.toLocaleString()} />
       {isModalOpen && (
-        <BottomSheet title="위시리스트 이름 정하기" closeModal={closeModal}>
-          <StyledBottomSheetContent>
-            <input
-              value={name}
-              placeholder="최대 50자"
-              maxLength="50"
-              onChange={(e) => {
-                setName(e.target.value);
-                setDisabled(e.target.value.length === 0 ? true : false);
-              }}
-            />
-            <div>최대 50자</div>
-            <button disabled={isDisabled}>새로 만들기</button>
-          </StyledBottomSheetContent>
+        <BottomSheet title={title} closeModal={() => setIsModalOpen(false)}>
+          {title === '위시리스트' ? (
+            <StyledExistingWishList>
+              <StyledButtonWrapper>
+                <button onClick={() => setTitle('새로운 위시 리스트 만들기')}>
+                  <img src={icPlus} />
+                </button>
+                <div>새로운 위시 리스트 만들기</div>
+              </StyledButtonWrapper>
+            </StyledExistingWishList>
+          ) : (
+            <StyledNewWishList>
+              <input
+                value={name}
+                placeholder="최대 50자"
+                maxLength="50"
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setDisabled(e.target.value.length === 0 ? true : false);
+                }}
+              />
+              <div>최대 50자</div>
+              <button disabled={isDisabled}>새로 만들기</button>
+            </StyledNewWishList>
+          )}
         </BottomSheet>
       )}
     </StyledRoom>
@@ -66,7 +75,33 @@ const StyledRoom = styled.div`
   min-height: 100vh;
 `;
 
-const StyledBottomSheetContent = styled.div`
+const StyledExistingWishList = styled.div`
+  padding: 2.4rem 2.2rem 2rem 2.2rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+`;
+
+const StyledButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+
+  & > button {
+    width: 5.8rem;
+    height: 5.8rem;
+    border: 0.1rem solid ${(props) => props.theme.colors.airGray1};
+    border-radius: 0.8rem;
+    background-color: ${(props) => props.theme.colors.airWhite};
+  }
+
+  & > button > img {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+`;
+
+const StyledNewWishList = styled.div`
   padding: 3.3rem 2.2rem 3.6rem 2.2rem;
 
   & > input {
