@@ -111,7 +111,6 @@ const StyledImg = styled.div`
 const StyledInfo = styled.div`
   font-family: 'AirbnbCereal_W_Md';
 
-  width: 18.1rem;
   height: 22.4rem;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;

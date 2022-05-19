@@ -9,7 +9,7 @@ function NavBar() {
         <img src={icSearch} />
         <span>둘러보기</span>
       </StyledNavToggle>
-      <Link to="/Wish">
+      <Link to="/wish">
         <StyledNavToggle>
           <img src={icWish} />
           <span>위시리스트</span>
