@@ -4,7 +4,7 @@ import { client } from 'libs/api';
 import RoomHeader from 'components/room/RoomHeader';
 import RoomInfo from 'components/room/RoomInfo';
 import RoomFooter from 'components/room/RoomFooter';
-import BottomSheet from 'components/common/BottomSheet';
+import BottomSheet from 'components/room/BottomSheet';
 import styled from 'styled-components';
 import { icPlus } from 'assets';
 
