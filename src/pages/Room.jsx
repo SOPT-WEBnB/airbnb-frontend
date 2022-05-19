@@ -40,11 +40,12 @@ function Room() {
           {title === '위시리스트' ? (
             <StyledExistingWishList>
               <StyledButtonWrapper>
-                <button onClick={() => setTitle('새로운 위시 리스트 만들기')}>
+                <button onClick={() => setTitle('위시리스트 이름 정하기')}>
                   <img src={icPlus} />
                 </button>
-                <div>새로운 위시 리스트 만들기</div>
+                <div>새로운 위시리스트 만들기</div>
               </StyledButtonWrapper>
+              {/* 여기에 기존 위시리스트 불러오기 */}
             </StyledExistingWishList>
           ) : (
             <StyledNewWishList>
