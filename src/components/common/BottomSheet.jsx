@@ -47,6 +47,10 @@ const StyledBottomSheetHeader = styled.div`
   align-items: center;
   border-bottom: 0.1rem ${(props) => props.theme.colors.airGray1};
 
+  & > img {
+    cursor: pointer;
+  }
+
   & > div {
     font-weight: 600;
     font-size: 1.4rem;
