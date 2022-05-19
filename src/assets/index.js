@@ -18,5 +18,3 @@ export { default as icMedal } from './icons/ic_medal.svg';
 export { default as icPin } from './icons/ic_pin.svg';
 export { default as icPlus } from './icons/ic_plus.svg';
 export { default as imgRoom } from './images/img_room.svg';
-
-export { default as icLoading } from './icons/ic_loading.svg';
