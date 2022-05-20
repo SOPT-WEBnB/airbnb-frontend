@@ -83,6 +83,6 @@ const StyledInfo = styled.div`
     font-size: 1.2rem;
     line-height: 1.4rem;
 
-    color: ${(props) => props.theme.colors.airGray1};
+    color: ${(props) => props.theme.colors.airGray2};
   }
 `;
