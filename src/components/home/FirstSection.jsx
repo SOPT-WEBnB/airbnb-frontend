@@ -31,7 +31,7 @@ const StyledIsBooked = styled.section`
   height: 27.6rem;
 
   background: #ffffff;
-  border: 1px solid ${(props) => props.theme.colors.airGray2};
+  border: 0.1rem solid ${(props) => props.theme.colors.airGray2};
   border-radius: 1rem;
   filter: drop-shadow(0.4rem 0.4rem 2rem rgba(0, 0, 0, 0.15));
 
@@ -70,7 +70,7 @@ const StyledFirstSection = styled.section`
   height: 24.1rem;
 
   background: #ffffff;
-  border: 1px solid ${(props) => props.theme.colors.airGray2};
+  border: 0.1rem solid ${(props) => props.theme.colors.airGray2};
   border-radius: 1rem;
 
   button {
