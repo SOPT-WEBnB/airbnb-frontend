@@ -67,6 +67,7 @@ const StyledNavToggle = styled.div`
   &:hover {
     span {
       color: ${(props) => props.theme.colors.airBlack};
+      font-weight: bold;
     }
   }
   img {

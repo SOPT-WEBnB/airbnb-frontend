@@ -1,5 +1,4 @@
 import Home from 'pages/Home';
-import Wish from 'pages/Wish';
 import Room from 'pages/Room';
 import WishList from 'pages/WishList';
 import React from 'react';
@@ -14,7 +13,6 @@ function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/room/:id" element={<Room />} />
-        <Route path="/wish" element={<Wish />} />
         <Route path="/*" element={<p>Page Not Found</p>} />
       </Routes>
     </BrowserRouter>
