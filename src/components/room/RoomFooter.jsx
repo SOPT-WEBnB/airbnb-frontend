@@ -7,7 +7,7 @@ function RoomFooter({ price, host, title }) {
       <div>
         <span>₩{price}</span> / 박
       </div>
-      <Link to="/" state={{ title: { title }, host: { host } }}>
+      <Link to="/" state={{ roomInfo: { title, host } }}>
         <button>예약하기</button>
       </Link>
     </StyledRoomFooter>
