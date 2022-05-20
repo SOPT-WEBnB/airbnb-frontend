@@ -48,7 +48,7 @@ const StyledFirstSection = styled.section`
   height: 24.1rem;
 
   background: #ffffff;
-  border: 1px solid ${(props) => props.theme.colors.airGray2};
+  border: 1px solid ${(props) => props.theme.colors.airGray1};
   border-radius: 1rem;
 
   button {
@@ -131,6 +131,6 @@ const StyledInfo = styled.div`
     font-size: 1.2rem;
     line-height: 1.4rem;
 
-    color: ${(props) => props.theme.colors.airGray1};
+    color: ${(props) => props.theme.colors.airGray2};
   }
 `;

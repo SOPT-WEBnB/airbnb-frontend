@@ -47,7 +47,7 @@ const StyledFooter = styled.footer`
   height: 5.8rem;
 
   background: ${(props) => props.theme.colors.airWhite};
-  border-top: 0.1rem solid ${(props) => props.theme.colors.airGray2};
+  border-top: 0.1rem solid ${(props) => props.theme.colors.airGray1};
 `;
 
 const StyledNavToggle = styled.div`
@@ -61,7 +61,7 @@ const StyledNavToggle = styled.div`
   gap: 0.4rem;
   flex-grow: 0;
 
-  color: ${(props) => props.theme.colors.airGray1};
+  color: ${(props) => props.theme.colors.airGray2};
   height: 3.9rem;
 
   &:hover {
