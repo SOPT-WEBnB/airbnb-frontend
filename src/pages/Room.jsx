@@ -13,7 +13,7 @@ function Room() {
   const [roomInfo, setRoomInfo] = useState([]);
   const [isDisabled, setDisabled] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(true);
-  const [bottomSheettitle, setBottomSheetTitle] = useState('위시리스트');
+  const [bottomSheetTitle, setBottomSheetTitle] = useState('위시리스트');
   const [name, setName] = useState('');
   const navigate = useNavigate();
 
@@ -36,8 +36,8 @@ function Room() {
       <RoomInfo {...roomInfo} />
       <RoomFooter host={host} title={title} price={price?.toLocaleString()} />
       {isModalOpen && (
-        <BottomSheet title={bottomSheettitle} closeModal={() => setIsModalOpen(false)}>
-          {bottomSheettitle === '위시리스트' ? (
+        <BottomSheet title={bottomSheetTitle} closeModal={() => setIsModalOpen(false)}>
+          {bottomSheetTitle === '위시리스트' ? (
             <StyledExistingWishList>
               <StyledButtonWrapper>
                 <button onClick={() => setBottomSheetTitle('위시리스트 이름 정하기')}>

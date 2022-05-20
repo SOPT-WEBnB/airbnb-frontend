@@ -31,7 +31,7 @@ const StyledIsBooked = styled.section`
   height: 27.6rem;
 
   background: #ffffff;
-  border: 0.1rem solid ${(props) => props.theme.colors.airGray2};
+  border: 0.1rem solid ${(props) => props.theme.colors.airGray1};
   border-radius: 1rem;
   filter: drop-shadow(0.4rem 0.4rem 2rem rgba(0, 0, 0, 0.15));
 
@@ -50,6 +50,7 @@ const StyledIsBooked = styled.section`
     margin: 2.2rem 2rem 0.8rem 2rem;
     font-family: 'AirbnbCereal_W_Md';
   }
+
   span {
     font-weight: 500;
     font-size: 1.2rem;
@@ -70,7 +71,7 @@ const StyledFirstSection = styled.section`
   height: 24.1rem;
 
   background: #ffffff;
-  border: 0.1rem solid ${(props) => props.theme.colors.airGray2};
+  border: 0.1rem solid ${(props) => props.theme.colors.airGray1};
   border-radius: 1rem;
 
   button {

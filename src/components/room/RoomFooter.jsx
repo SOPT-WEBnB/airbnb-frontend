@@ -8,7 +8,7 @@ function RoomFooter({ price, host, title }) {
         <span>₩{price}</span> / 박
       </div>
       <Link to="/" state={{ roomInfo: { title, host } }}>
-        <button>예약하기</button>
+        예약하기
       </Link>
     </StyledRoomFooter>
   );
@@ -40,7 +40,7 @@ const StyledRoomFooter = styled.div`
     }
   }
 
-  button {
+  a {
     background-color: ${(props) => props.theme.colors.airPink};
     color: ${(props) => props.theme.colors.airWhite};
     font-weight: 500;
