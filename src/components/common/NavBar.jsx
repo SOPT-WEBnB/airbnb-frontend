@@ -36,10 +36,10 @@ function NavBar() {
 export default NavBar;
 
 const StyledFooter = styled.footer`
-  position: sticky;
+  position: fixed;
+  width: min(42rem, 100%);
   bottom: 0;
   display: flex;
-  width: 100%;
   padding: 0.9rem 2.15rem 1rem 2.15rem;
   align-items: center;
   justify-content: space-between;

@@ -17,10 +17,10 @@ function RoomFooter({ price, host, title }) {
 export default RoomFooter;
 
 const StyledRoomFooter = styled.div`
-  position: sticky;
+  position: fixed;
+  width: min(42rem, 100%);
   bottom: 0;
   display: flex;
-  width: 100%;
   height: 7.4rem;
   padding: 1.5rem 2.2rem;
   align-items: center;
