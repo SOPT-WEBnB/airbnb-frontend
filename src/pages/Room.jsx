@@ -13,7 +13,7 @@ function Room() {
   const [roomInfo, setRoomInfo] = useState([]);
   const [isDisabled, setDisabled] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(true);
-  const [title, setTitle] = useState('위시리스트');
+  const [bottomSheettitle, setBottomSheetTitle] = useState('위시리스트');
   const [name, setName] = useState('');
   const navigate = useNavigate();
 
@@ -36,11 +36,11 @@ function Room() {
       <RoomInfo {...roomInfo} />
       <RoomFooter price={price?.toLocaleString()} />
       {isModalOpen && (
-        <BottomSheet title={title} closeModal={() => setIsModalOpen(false)}>
-          {title === '위시리스트' ? (
+        <BottomSheet title={bottomSheettitle} closeModal={() => setIsModalOpen(false)}>
+          {bottomSheettitle === '위시리스트' ? (
             <StyledExistingWishList>
               <StyledButtonWrapper>
-                <button onClick={() => setTitle('위시리스트 이름 정하기')}>
+                <button onClick={() => setBottomSheetTitle('위시리스트 이름 정하기')}>
                   <img src={icPlus} />
                 </button>
                 <div>새로운 위시리스트 만들기</div>
