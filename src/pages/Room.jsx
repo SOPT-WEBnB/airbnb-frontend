@@ -27,14 +27,12 @@ function Room() {
     getRoomInfo();
   }, []);
 
-  const { image, price, host, title } = roomInfo;
-
   return (
     <StyledRoom>
       <RoomHeader />
-      <img src={image} />
+      <img src={roomInfo.image} />
       <RoomInfo {...roomInfo} />
-      <RoomFooter host={host} title={title} price={price?.toLocaleString()} />
+      <RoomFooter {...roomInfo} />
       {isModalOpen && (
         <BottomSheet title={bottomSheetTitle} closeModal={() => setIsModalOpen(false)}>
           {bottomSheetTitle === '위시리스트' ? (
