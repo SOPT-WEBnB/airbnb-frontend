@@ -10,7 +10,7 @@ function Wish() {
   const { category } = useParams();
   const [wishDetail, setWishDetail] = useState([]);
 
-  const getWishDetail = async() => {
+  const getWishDetail = async () => {
     const { data } = await client.get('/wish');
     setWishDetail(data);
   };
@@ -23,7 +23,7 @@ function Wish() {
     <StyledWish>
       <img src={icBackToWishlist}></img>
       <WishHeader category={category}></WishHeader>
-      <WishDetail detail={wishDetail}></WishDetail>
+      <WishDetail detail={wishDetail} setWishDetail={setWishDetail}></WishDetail>
     </StyledWish>
   );
 }

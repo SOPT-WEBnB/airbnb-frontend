@@ -1,15 +1,35 @@
-import { icFillHeartBtn } from 'assets';
 import styled from 'styled-components';
+import HeartButton from 'components/common/HeartButton';
+import { client } from 'libs/api';
 
-function WishDetail({ detail }) {
+function WishDetail({ detail, setWishDetail }) {
+  const toggleHeart = async (id, currentHeartStatus) => {
+    await client.patch(`/wish/${id}`, {
+      like: !currentHeartStatus,
+    });
+
+    const newDetail = detail.map((post) => {
+      if (post.id === id) {
+        return {
+          ...post,
+          like: !currentHeartStatus,
+        };
+      }
+
+      return post;
+    });
+
+    setWishDetail(newDetail);
+  };
+
   return (
     <StyledWishDetail>
-      {detail.map(({ id, image, title, price }) => (
+      {detail.map(({ id, image, title, price, like }) => (
         <li key={id}>
           <StyledDetailCard>
             <div>
               <img src={image} />
-              <img src={icFillHeartBtn} />
+              <HeartButton isLiked={like} toggleHeart={() => toggleHeart(id, like)} />
             </div>
             <span>{title}</span>
             <div>
@@ -43,19 +63,13 @@ const StyledDetailCard = styled.div`
   flex-direction: column;
   align-items: start;
   div:first-child {
-      position: relative;
+    position: relative;
   }
   div > img:first-child {
     width: 33.1rem;
     height: 22rem;
     border-radius: 1.2rem;
     object-fit: cover;
-  }
-
-  div > img:last-child {
-    position: absolute;
-    top: 1.2rem;
-    right: 1.2rem;
   }
 
   & > span {
