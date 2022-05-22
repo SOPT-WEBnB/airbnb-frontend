@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { icFillHeartBtn, icUnfillHeartBtn } from 'assets';
 import styled from 'styled-components';
 
