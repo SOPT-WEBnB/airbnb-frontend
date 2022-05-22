@@ -1,32 +1,35 @@
 import styled from 'styled-components';
-import { icTravel, icWish, icSearch, icMessage, icProfile } from 'assets';
+import { IcWish, IcTravel, IcSearch, IcMessage, IcProfile } from 'assets';
 import { Link } from 'react-router-dom';
 
 function NavBar() {
   return (
     <StyledFooter>
       <StyledNavToggle>
-        <img src={icSearch} />
+        <IcSearch />
         <span>둘러보기</span>
       </StyledNavToggle>
-      <Link to="/Wishlist">
+
+      <Link to="/wishlist">
         <StyledNavToggle>
-          <img src={icWish} />
+          <IcWish />
           <span>위시리스트</span>
         </StyledNavToggle>
       </Link>
+
       <Link to="/">
         <StyledNavToggle>
-          <img src={icTravel} />
+          <IcTravel />
           <span>여행</span>
         </StyledNavToggle>
       </Link>
+
       <StyledNavToggle>
-        <img src={icMessage} />
+        <IcMessage />
         <span>메세지</span>
       </StyledNavToggle>
       <StyledNavToggle>
-        <img src={icProfile} />
+        <IcProfile />
         <span>프로필</span>
       </StyledNavToggle>
     </StyledFooter>
@@ -60,18 +63,32 @@ const StyledNavToggle = styled.div`
   align-items: center;
   gap: 0.4rem;
   flex-grow: 0;
+  cursor: pointer;
 
-  color: ${(props) => props.theme.colors.airGray1};
+  color: black;
   height: 3.9rem;
+  img {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
 
   &:hover {
     span {
       color: ${(props) => props.theme.colors.airBlack};
       font-weight: bold;
     }
-  }
-  img {
-    width: 2.4rem;
-    height: 2.4rem;
+    svg > path {
+      fill: ${(props) => props.theme.colors.airPink};
+    }
   }
 `;
+
+// const StyledNavActive = styled(StyledNavToggle)`
+//   span {
+//     color: ${(props) => props.theme.colors.airBlack};
+//     font-weight: bold;
+//   }
+//   svg > path {
+//     fill: ${(props) => props.theme.colors.airPink};
+//   }
+// `;
