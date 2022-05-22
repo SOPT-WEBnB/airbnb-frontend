@@ -5,10 +5,12 @@ import WishHeader from 'components/wish/WishHeader';
 import React, { useEffect, useState } from 'react';
 import { client } from 'libs/api';
 import WishDetail from 'components/wish/WishDetail';
+import { useNavigate } from 'react-router-dom';
 
 function Wish() {
   const { category } = useParams();
   const [wishDetail, setWishDetail] = useState([]);
+  const navigate = useNavigate();
 
   const getWishDetail = async () => {
     const { data } = await client.get('/wish');
@@ -21,7 +23,7 @@ function Wish() {
 
   return (
     <StyledWish>
-      <img src={icBackToWishlist}></img>
+      <button onClick={() => navigate(-1)} />
       <WishHeader category={category}></WishHeader>
       <WishDetail detail={wishDetail} setWishDetail={setWishDetail}></WishDetail>
     </StyledWish>
@@ -31,9 +33,10 @@ function Wish() {
 export default Wish;
 
 const StyledWish = styled.div`
-  & > img {
+  & > button {
     width: 2.4rem;
     height: 2.4rem;
     margin: 5rem 2.4rem;
+    background: no-repeat center/cover url(${icBackToWishlist});
   }
 `;
