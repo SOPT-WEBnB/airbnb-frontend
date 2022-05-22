@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 function WishHeader({ category }) {
-  console.log(category);
   return <StyledWishHeader>{category}</StyledWishHeader>;
 }
 
