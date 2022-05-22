@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-function RoomFooter({ price, host, title }) {
+function RoomFooter({ price, title, host }) {
   return (
     <StyledRoomFooter>
       <div>
-        <span>₩{price}</span> / 박
+        <span>₩{price?.toLocaleString()}</span> / 박
       </div>
-      <Link to="/" state={{ title: { title }, host: { host } }}>
-        <button>예약하기</button>
+      <Link to="/" state={{ roomInfo: { title, host } }}>
+        예약하기
       </Link>
     </StyledRoomFooter>
   );
@@ -40,7 +40,7 @@ const StyledRoomFooter = styled.div`
     }
   }
 
-  button {
+  a {
     background-color: ${(props) => props.theme.colors.airPink};
     color: ${(props) => props.theme.colors.airWhite};
     font-weight: 500;

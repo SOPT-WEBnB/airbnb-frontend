@@ -4,22 +4,12 @@ import NavBar from 'components/common/NavBar';
 import { useLocation } from 'react-router-dom';
 
 function Home() {
-  let title;
-  let host;
-
-  try {
-    const location = useLocation();
-    const state = location.state;
-    title = state.title.title;
-    host = state.host.host;
-  } catch (e) {
-    title = 'unBooked';
-    host = 'unBooked';
-  }
+  const location = useLocation();
+  const state = location.state;
 
   return (
     <StyledHome>
-      <HomeInfo title={title} host={host} />
+      <HomeInfo title={state?.roomInfo.title ?? 'unBooked'} host={state?.roomInfo.host ?? 'unBooked'} />
       <NavBar />
     </StyledHome>
   );

@@ -1,37 +1,23 @@
 import { icCalendar, icMedal, icPin } from 'assets';
 import styled from 'styled-components';
 
-function RoomInfo({ title, rate, review, level, place, host, max, bedroom, bed, bathroom, month, date }) {
+function RoomInfo({ title, host }) {
   return (
     <StyledRoomInfo>
       <StyledFirstSection>
         <h1>{title}</h1>
-        <div>
-          <span>{rate?.toFixed(1)}</span>
-          <span>·</span>
-          <span>후기 {review}</span>
-          <span>·</span>
-          <span>{level}</span>
-        </div>
-        <div>{place}</div>
+        <div>4.8 · 후기 46 · 슈퍼호스트</div>
+        <div>Seoul, Korea</div>
       </StyledFirstSection>
       <StyledSecondSection>
         <div>집 전체</div>
         <div>호스트:{host}님</div>
-        <div>
-          <span>최대 인원 {max}명</span>
-          <span>·</span>
-          <span>침실 {bedroom}개</span>
-          <span>·</span>
-          <span>침대 {bed}개</span>
-          <span>·</span>
-          <span>욕실 {bathroom}개</span>
-        </div>
+        <div>최대 인원 4명 · 침실 1개 · 침대 2개 · 욕실 1개</div>
       </StyledSecondSection>
       <StyledLastSection>
         <div>
           <img src={icMedal} />
-          {host}님은 {level}입니다
+          {host}님은 슈퍼호스트입니다
         </div>
         <div>
           <img src={icPin} />
@@ -39,7 +25,7 @@ function RoomInfo({ title, rate, review, level, place, host, max, bedroom, bed, 
         </div>
         <div>
           <img src={icCalendar} />
-          {month}월 {date}일 전까지 무료 취소 가능
+          7월 11일 전까지 무료 취소 가능
         </div>
       </StyledLastSection>
     </StyledRoomInfo>
@@ -70,13 +56,8 @@ const StyledFirstSection = styled.div`
     font-family: 'AirbnbCereal_W_Md';
   }
 
-  div:nth-child(2) {
-    display: flex;
-    gap: 0.4rem;
-    margin-bottom: 0.8rem;
-  }
-
   div:last-child {
+    margin-top: 0.8rem;
     font-family: 'AirbnbCereal_W_Md';
   }
 
@@ -96,8 +77,6 @@ const StyledSecondSection = styled.div`
   }
 
   div:last-child {
-    display: flex;
-    gap: 0.4rem;
     margin-top: 0.6rem;
     font-weight: 500;
     font-size: 1.4rem;
