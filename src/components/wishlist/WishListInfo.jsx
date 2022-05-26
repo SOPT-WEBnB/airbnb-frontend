@@ -1,11 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 function WishListInfo({ list }) {
+  const navigate = useNavigate();
+
   return (
     <StyledWishListInfo>
       <StyledCategoryInfo>
         {list.map(({ id, image, title }) => (
-          <li key={id}>
+          <li
+            key={id}
+            onClick={() => {
+              navigate(`/wish/${title}`);
+            }}>
             <img src={image} />
             <span>{title}</span>
           </li>
