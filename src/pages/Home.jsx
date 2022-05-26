@@ -1,10 +1,16 @@
 import styled from 'styled-components';
+import HomeInfo from 'components/home/HomeInfo';
+import NavBar from 'components/common/NavBar';
+import { useLocation } from 'react-router-dom';
 
 function Home() {
+  const location = useLocation();
+  const state = location.state;
+
   return (
     <StyledHome>
-      Home
-      <button>숙소 검색하기</button>
+      <HomeInfo title={state?.roomInfo.title ?? 'unBooked'} host={state?.roomInfo.host ?? 'unBooked'} />
+      <NavBar />
     </StyledHome>
   );
 }
@@ -12,8 +18,27 @@ function Home() {
 export default Home;
 
 const StyledHome = styled.div`
-  button {
-    background-color: ${(props) => props.theme.colors.airPink};
-    color: ${(props) => props.theme.colors.airWhite};
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+
+  h1 {
+    margin-right: 23.9rem;
+    margin-top: 8.4rem;
+    margin-bottom: 2.2rem;
+
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 2.4rem;
+  }
+
+  h2 {
+    margin-right: 23.9rem;
+    margin-top: 4.8rem;
+
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 2.4rem;
   }
 `;

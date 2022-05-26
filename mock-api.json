@@ -1,37 +1,17 @@
 {
   "room": [
     {
-      "id": 1,
+      "id": "1",
       "image": "https://user-images.githubusercontent.com/58380158/168527564-c0583ef3-515b-44bc-93ae-173f242d6989.svg",
       "title": "[NEW OPEN] Wangsimni 3min, Clean!",
-      "rate": 4.8,
-      "review": 46,
-      "level": "슈퍼호스트",
-      "place": "Wangsimnidoseon-dong, Seongdong-gu, Seoul, Korea",
       "host": "Manman",
-      "max": 4,
-      "bedroom": 1,
-      "bed": 2,
-      "bathroom": 1,
-      "month": 7,
-      "date": 11,
       "price": 140000
     },
     {
-      "id": 2,
+      "id": "2",
       "image": "https://user-images.githubusercontent.com/58380158/168527564-c0583ef3-515b-44bc-93ae-173f242d6989.svg",
       "title": "[NEW OPEN] Wangsimni 5min, Clean!",
-      "rate": 5,
-      "review": 10,
-      "level": "슈퍼호스트",
-      "place": "Wangsimnidoseon-dong, Seongdong-gu, Seoul, Korea",
       "host": "백지연",
-      "max": 2,
-      "bedroom": 1,
-      "bed": 1,
-      "bathroom": 1,
-      "month": 5,
-      "date": 28,
       "price": 350000
     }
   ],

@@ -1,5 +1,4 @@
 import Home from 'pages/Home';
-import Wish from 'pages/Wish';
 import Room from 'pages/Room';
 import WishList from 'pages/WishList';
 import React from 'react';

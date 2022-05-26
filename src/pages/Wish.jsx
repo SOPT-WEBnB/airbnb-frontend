@@ -40,3 +40,4 @@ const StyledWish = styled.div`
     background: no-repeat center/cover url(${icBackToWishlist});
   }
 `;
+

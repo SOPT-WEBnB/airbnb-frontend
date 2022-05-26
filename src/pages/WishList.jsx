@@ -3,6 +3,7 @@ import { client } from 'libs/api';
 import styled from 'styled-components';
 import React, { useState, useEffect } from 'react';
 import WishListInfo from 'components/wishlist/WishListInfo';
+import NavBar from 'components/common/NavBar';
 
 function WishList() {
   const [categoryList, setCategoryList] = useState([]);
@@ -17,10 +18,13 @@ function WishList() {
   }, []);
 
   return (
-    <StyledCategory>
-      <WishListHeader />
-      <WishListInfo list={categoryList} />
-    </StyledCategory>
+    <>
+      <StyledCategory>
+        <WishListHeader />
+        <WishListInfo list={categoryList} />
+      </StyledCategory>
+      <NavBar />
+    </>
   );
 }
 
