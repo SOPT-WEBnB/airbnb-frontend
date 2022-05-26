@@ -35,6 +35,8 @@ const StyledBottomSheet = styled.div`
   position: fixed;
   width: min(42rem, 100%);
   height: fit-content;
+  max-height: 90%;
+  overflow-y: scroll;
   bottom: 0;
   border-radius: 1rem 1rem 0 0;
   background-color: ${(props) => props.theme.colors.airWhite};
