@@ -29,13 +29,15 @@ function WishDetail({ detail, setWishDetail }) {
           <StyledDetailCard>
             <div>
               <img src={image} />
-              <HeartButton isLiked={like} toggleHeart={() => toggleHeart(id, like)} />
+              <StyledHeartButton>
+                <HeartButton isLiked={like} toggleHeart={() => toggleHeart(id, like)} />
+              </StyledHeartButton>
             </div>
             <span>{title}</span>
             <div>
               <span>₩{price.toLocaleString()}</span>
-              <span> / </span>
-              <span> 박</span>
+              <span>/</span>
+              <span>박</span>
             </div>
           </StyledDetailCard>
         </li>
@@ -52,21 +54,21 @@ const StyledWishDetail = styled.div`
   align-items: center;
   gap: 2.4rem;
   padding: 0 2.2rem;
-  width: 100%;
   li {
     list-style: none;
+    cursor: pointer;
   }
 `;
 
 const StyledDetailCard = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: start;
   div:first-child {
     position: relative;
   }
+
   div > img:first-child {
-    width: 33.1rem;
+    width: 100%;
     height: 22rem;
     border-radius: 1.2rem;
     object-fit: cover;
@@ -105,4 +107,10 @@ const StyledDetailCard = styled.div`
       padding-left: 0.4rem;
     }
   }
+`;
+
+const StyledHeartButton = styled.div`
+  position: absolute;
+  top: -0.4rem;
+  right: -0.4rem;
 `;

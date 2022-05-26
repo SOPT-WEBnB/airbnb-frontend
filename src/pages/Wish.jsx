@@ -24,8 +24,8 @@ function Wish() {
   return (
     <StyledWish>
       <button onClick={() => navigate(-1)} />
-      <WishHeader category={category}></WishHeader>
-      <WishDetail detail={wishDetail} setWishDetail={setWishDetail}></WishDetail>
+      <WishHeader category={category} />
+      <WishDetail detail={wishDetail} setWishDetail={setWishDetail} />
     </StyledWish>
   );
 }
@@ -36,8 +36,9 @@ const StyledWish = styled.div`
   & > button {
     width: 2.4rem;
     height: 2.4rem;
-    margin: 5rem 2.4rem;
+    margin-left: 2.4rem;
+    margin-top: 0.6rem;
+    margin-bottom: 4.6rem;
     background: no-repeat center/cover url(${icBackToWishlist});
   }
 `;
-

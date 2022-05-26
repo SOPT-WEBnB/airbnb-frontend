@@ -4,7 +4,7 @@ import styled from 'styled-components';
 function HeartButton({ isLiked, toggleHeart }) {
   return (
     <StyledHeartButton onClick={() => toggleHeart()}>
-      {isLiked ? <img src={icFillHeartBtn} /> : <img src={icUnfillHeartBtn} />}
+      <img src={isLiked ? icFillHeartBtn : icUnfillHeartBtn} />
     </StyledHeartButton>
   );
 }
