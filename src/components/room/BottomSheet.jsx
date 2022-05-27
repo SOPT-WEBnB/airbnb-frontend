@@ -35,6 +35,11 @@ const StyledBottomSheet = styled.div`
   position: fixed;
   width: min(42rem, 100%);
   height: fit-content;
+  max-height: 90%;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   bottom: 0;
   border-radius: 1rem 1rem 0 0;
   background-color: ${(props) => props.theme.colors.airWhite};
@@ -46,6 +51,9 @@ const StyledBottomSheetHeader = styled.div`
   display: flex;
   align-items: center;
   border-bottom: 0.1rem solid ${(props) => props.theme.colors.airGray1};
+  position: sticky;
+  top: 0;
+  background: ${(props) => props.theme.colors.airWhite};
 
   & > img {
     cursor: pointer;
