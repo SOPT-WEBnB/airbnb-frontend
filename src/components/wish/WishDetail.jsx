@@ -54,6 +54,7 @@ const StyledWishDetail = styled.div`
   align-items: center;
   gap: 2.4rem;
   padding: 0 2.2rem;
+  margin-bottom: 2.4rem;
   li {
     list-style: none;
     cursor: pointer;
