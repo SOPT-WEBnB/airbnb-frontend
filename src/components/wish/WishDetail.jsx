@@ -1,8 +1,10 @@
-import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import HeartButton from 'components/common/HeartButton';
 import { client } from 'libs/api';
+import styled from 'styled-components';
 
 function WishDetail({ detail, setWishDetail }) {
+  const navigate = useNavigate();
   const toggleHeart = async (id, currentHeartStatus) => {
     await client.patch(`/wish/${id}`, {
       like: !currentHeartStatus,
@@ -25,7 +27,7 @@ function WishDetail({ detail, setWishDetail }) {
   return (
     <StyledWishDetail>
       {detail.map(({ id, image, title, price, like }) => (
-        <li key={id}>
+        <li key={id} onClick={() => navigate(`/room/${id}`)}>
           <StyledDetailCard>
             <div>
               <img src={image} />
