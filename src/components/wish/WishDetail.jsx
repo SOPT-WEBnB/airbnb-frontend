@@ -5,20 +5,19 @@ import styled from 'styled-components';
 
 function WishDetail({ detail, setWishDetail }) {
   const navigate = useNavigate();
-  const toggleHeart = async (id, currentHeartStatus) => {
+  const toggleHeart = async (id, currentHeartState) => {
     await client.patch(`/wish/${id}`, {
-      like: !currentHeartStatus,
+      like: !currentHeartState,
     });
 
-    const newDetail = detail.map((post) => {
-      if (post.id === id) {
+    const newDetail = detail.map((room) => {
+      if (room.id === id) {
         return {
-          ...post,
-          like: !currentHeartStatus,
+          ...room,
+          like: !currentHeartState,
         };
       }
-
-      return post;
+      return room;
     });
 
     setWishDetail(newDetail);
