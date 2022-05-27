@@ -1,12 +1,18 @@
 import { icFillHeart } from 'assets';
 import styled from 'styled-components';
+import { useRecoilValue } from 'recoil';
+import { toastState } from 'stores/toast';
 
 function Toast() {
+  const message = useRecoilValue(toastState);
+
   return (
-    <StyledToast>
-      <img src={icFillHeart} />
-      <div>토스트 메시지 내용</div>
-    </StyledToast>
+    message && (
+      <StyledToast>
+        <img src={icFillHeart} />
+        <div>{message}</div>
+      </StyledToast>
+    )
   );
 }
 
