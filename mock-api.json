@@ -1,20 +1,4 @@
 {
-  "room": [
-    {
-      "id": "1",
-      "image": "https://user-images.githubusercontent.com/58380158/168527564-c0583ef3-515b-44bc-93ae-173f242d6989.svg",
-      "title": "[NEW OPEN] Wangsimni 3min, Clean!",
-      "host": "Manman",
-      "price": 140000
-    },
-    {
-      "id": "2",
-      "image": "https://user-images.githubusercontent.com/58380158/168527564-c0583ef3-515b-44bc-93ae-173f242d6989.svg",
-      "title": "[NEW OPEN] Wangsimni 5min, Clean!",
-      "host": "백지연",
-      "price": 350000
-    }
-  ],
   "category": [
     {
       "id": 1,
@@ -37,6 +21,7 @@
       "id": 1,
       "image": "https://images.unsplash.com/photo-1616486532925-accce4930585?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932",
       "title": "[NEW OPEN] Wangsimni 3min, Clean!",
+      "host": "Manman",
       "price": 140000,
       "like": true
     },
@@ -44,14 +29,16 @@
       "id": 2,
       "image": "https://q-xx.bstatic.com/xdata/images/hotel/840x460/205684046.jpg?k=edd4b442376ac9cf1784cb06c8de0dc8a6037a871e50f060ba8bbcdc297cb74a&o=",
       "title": "[NEW OPEN] Wangsimni 3min, Clean!",
-      "price": 140000,
+      "price": 210000,
+      "host": "백지연",
       "like": true
     },
     {
       "id": 3,
       "image": "https://images.squarespace-cdn.com/content/v1/5c98781fb7c92ca52755030e/1599032785176-TGX7WVXKW9HDLRBGI02P/DSC_0142.jpg?format=2500w",
       "title": "[NEW OPEN] Wangsimni 3min, Clean!",
-      "price": 140000,
+      "price": 350000,
+      "host": "SOPT",
       "like": false
     }
   ]

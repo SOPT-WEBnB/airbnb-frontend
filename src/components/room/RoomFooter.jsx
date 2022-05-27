@@ -1,15 +1,25 @@
+import { useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
+import { toastState } from 'stores/toast';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
-function RoomFooter({ price, title, host }) {
+function RoomFooter({ image, price, title, host }) {
+  const navigate = useNavigate();
+  const messageHandler = useSetRecoilState(toastState);
+
   return (
     <StyledRoomFooter>
       <div>
         <span>₩{price?.toLocaleString()}</span> / 박
       </div>
-      <Link to="/" state={{ roomInfo: { title, host } }}>
+      <button
+        onClick={() => {
+          navigate('/', { state: { image, title, host } });
+          messageHandler('예약이 완료되었습니다.');
+          setTimeout(() => messageHandler(''), 1500);
+        }}>
         예약하기
-      </Link>
+      </button>
     </StyledRoomFooter>
   );
 }
@@ -40,7 +50,7 @@ const StyledRoomFooter = styled.div`
     }
   }
 
-  a {
+  button {
     background-color: ${(props) => props.theme.colors.airPink};
     color: ${(props) => props.theme.colors.airWhite};
     font-weight: 500;

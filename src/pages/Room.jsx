@@ -13,14 +13,14 @@ function Room() {
   const { id: roomID } = useParams();
   const [roomInfo, setRoomInfo] = useState([]);
   const [isDisabled, setDisabled] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [bottomSheetTitle, setBottomSheetTitle] = useState('위시리스트');
   const [name, setName] = useState('');
   const [wishListInfo, setWishListInfo] = useState([]);
   const navigate = useNavigate();
 
   const getRoomInfo = async () => {
-    const { data } = await client.get('/room');
+    const { data } = await client.get('/wish');
     if (roomID > data.length) navigate('/');
     setRoomInfo(data[roomID - 1]);
   };

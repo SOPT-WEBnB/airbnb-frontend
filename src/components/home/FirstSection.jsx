@@ -1,22 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
-import { icHand, imgRoom } from 'assets';
+import { icHand } from 'assets';
 
-function FirstSection({ title, host }) {
+function FirstSection({ roomInfo }) {
   return (
     <>
-      {title === 'unBooked' ? (
+      {roomInfo ? (
+        <StyledIsBooked>
+          <img src={roomInfo.image} />
+          <p>{roomInfo.title}</p>
+          <span>{roomInfo.host} 님이 호스팅 하는 집 전체</span>
+        </StyledIsBooked>
+      ) : (
         <StyledFirstSection>
           <StyledIcHand src={icHand} />
           <span>아직 예약된 여행이 없습니다!</span>
           <StyledSearchButton>숙소 검색하기</StyledSearchButton>
         </StyledFirstSection>
-      ) : (
-        <StyledIsBooked>
-          <img src={imgRoom} />
-          <p>{title}</p>
-          <span>{host} 님이 호스팅 하는 집 전체</span>
-        </StyledIsBooked>
       )}
     </>
   );

@@ -1,22 +1,23 @@
-import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import HeartButton from 'components/common/HeartButton';
 import { client } from 'libs/api';
+import styled from 'styled-components';
 
 function WishDetail({ detail, setWishDetail }) {
-  const toggleHeart = async (id, currentHeartStatus) => {
+  const navigate = useNavigate();
+  const toggleHeart = async (id, currentHeartState) => {
     await client.patch(`/wish/${id}`, {
-      like: !currentHeartStatus,
+      like: !currentHeartState,
     });
 
-    const newDetail = detail.map((post) => {
-      if (post.id === id) {
+    const newDetail = detail.map((room) => {
+      if (room.id === id) {
         return {
-          ...post,
-          like: !currentHeartStatus,
+          ...room,
+          like: !currentHeartState,
         };
       }
-
-      return post;
+      return room;
     });
 
     setWishDetail(newDetail);
@@ -25,7 +26,7 @@ function WishDetail({ detail, setWishDetail }) {
   return (
     <StyledWishDetail>
       {detail.map(({ id, image, title, price, like }) => (
-        <li key={id}>
+        <li key={id} onClick={() => navigate(`/room/${id}`)}>
           <StyledDetailCard>
             <div>
               <img src={image} />
@@ -54,6 +55,7 @@ const StyledWishDetail = styled.div`
   align-items: center;
   gap: 2.4rem;
   padding: 0 2.2rem;
+  margin-bottom: 2.4rem;
   li {
     list-style: none;
     cursor: pointer;
@@ -111,6 +113,6 @@ const StyledDetailCard = styled.div`
 
 const StyledHeartButton = styled.div`
   position: absolute;
-  top: -0.4rem;
-  right: -0.4rem;
+  top: 1.2rem;
+  right: 1.2rem;
 `;

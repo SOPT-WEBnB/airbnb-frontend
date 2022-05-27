@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 import HomeInfo from 'components/home/HomeInfo';
 import NavBar from 'components/common/NavBar';
-import { useLocation } from 'react-router-dom';
+import styled from 'styled-components';
 
 function Home() {
   const location = useLocation();
@@ -9,7 +9,7 @@ function Home() {
 
   return (
     <StyledHome>
-      <HomeInfo title={state?.roomInfo.title ?? 'unBooked'} host={state?.roomInfo.host ?? 'unBooked'} />
+      <HomeInfo roomInfo={state} />
       <NavBar />
     </StyledHome>
   );

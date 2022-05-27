@@ -39,6 +39,7 @@ const StyledCategoryInfo = styled.div`
     display: flex;
     align-items: center;
     gap: 1.6rem;
+    cursor: pointer;
   }
 
   li > span {
