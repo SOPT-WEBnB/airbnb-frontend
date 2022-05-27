@@ -13,7 +13,4 @@ export default HeartButton;
 
 const StyledHeartButton = styled.button`
   background: transparent;
-  position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
 `;

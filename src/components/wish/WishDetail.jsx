@@ -114,6 +114,6 @@ const StyledDetailCard = styled.div`
 
 const StyledHeartButton = styled.div`
   position: absolute;
-  top: -0.4rem;
-  right: -0.4rem;
+  top: 1.2rem;
+  right: 1.2rem;
 `;
