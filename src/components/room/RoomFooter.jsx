@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { toastState } from 'stores/toast';
-import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
-function RoomFooter({ price, title, host }) {
+function RoomFooter({ image, price, title, host }) {
   const navigate = useNavigate();
   const messageHandler = useSetRecoilState(toastState);
 
@@ -14,9 +14,9 @@ function RoomFooter({ price, title, host }) {
       </div>
       <button
         onClick={() => {
-          navigate('/', { state: { roomInfo: { title, host } } });
+          navigate('/', { state: { image, title, host } });
           messageHandler('예약이 완료되었습니다.');
-          setTimeout(() => messageHandler(''), 1000);
+          setTimeout(() => messageHandler(''), 1500);
         }}>
         예약하기
       </button>
