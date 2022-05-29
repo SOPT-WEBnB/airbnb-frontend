@@ -1,37 +1,29 @@
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-function WishListInfo({ list }) {
-  const navigate = useNavigate();
-
+function MiniWishListInfo({ list }) {
   return (
-    <StyledWishListInfo>
-      <StyledCategoryInfo>
+    <StyledMiniWishListInfo>
+      <StyledMiniCategoryInfo>
         {list.map(({ id, image, title }) => (
-          <li
-            key={id}
-            onClick={() => {
-              navigate(`/wish/${title}`);
-            }}>
+          <li key={id}>
             <img src={image} />
             <span>{title}</span>
           </li>
         ))}
-      </StyledCategoryInfo>
-    </StyledWishListInfo>
+      </StyledMiniCategoryInfo>
+    </StyledMiniWishListInfo>
   );
 }
 
-export default WishListInfo;
+export default MiniWishListInfo;
 
-const StyledWishListInfo = styled.div`
-  padding: 0 2.2rem;
-  gap: 1.4rem;
+const StyledMiniWishListInfo = styled.div`
+  margin-top: 2.4rem;
 `;
 
-const StyledCategoryInfo = styled.div`
+const StyledMiniCategoryInfo = styled.div`
   display: flex;
-  gap: 1.6rem;
+  gap: 2.4rem;
   flex-direction: column;
 
   li {
@@ -39,7 +31,6 @@ const StyledCategoryInfo = styled.div`
     display: flex;
     align-items: center;
     gap: 1.6rem;
-    cursor: pointer;
   }
 
   li > span {

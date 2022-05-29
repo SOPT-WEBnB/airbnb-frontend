@@ -7,24 +7,32 @@ import RoomFooter from 'components/room/RoomFooter';
 import BottomSheet from 'components/room/BottomSheet';
 import styled from 'styled-components';
 import { icPlus } from 'assets';
+import MiniWishListInfo from 'components/room/MiniWishListInfo';
 
 function Room() {
   const { id: roomID } = useParams();
   const [roomInfo, setRoomInfo] = useState([]);
   const [isDisabled, setDisabled] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [bottomSheetTitle, setBottomSheetTitle] = useState('위시리스트');
   const [name, setName] = useState('');
+  const [wishListInfo, setWishListInfo] = useState([]);
   const navigate = useNavigate();
 
   const getRoomInfo = async () => {
-    const { data } = await client.get('/room');
+    const { data } = await client.get('/wish');
     if (roomID > data.length) navigate('/');
     setRoomInfo(data[roomID - 1]);
   };
 
+  const getWishListInfo = async () => {
+    const { data } = await client.get('/category');
+    setWishListInfo(data);
+  };
+
   useEffect(() => {
     getRoomInfo();
+    getWishListInfo();
   }, []);
 
   return (
@@ -43,7 +51,7 @@ function Room() {
                 </button>
                 <div>새로운 위시리스트 만들기</div>
               </StyledButtonWrapper>
-              {/* 여기에 기존 위시리스트 불러오기 */}
+              <MiniWishListInfo list={wishListInfo} />
             </StyledExistingWishList>
           ) : (
             <StyledNewWishList>

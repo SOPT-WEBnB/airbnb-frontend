@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { imgChuncheon, imgSokcho, imgDaejeon } from 'assets';
 import FirstSection from './FirstSection';
 
-function HomeInfo({ title, host }) {
+function HomeInfo({ roomInfo }) {
   return (
     <>
       <h1>예정된 예약</h1>
-      <FirstSection title={title} host={host} />
+      <FirstSection roomInfo={roomInfo} />
       <h2>이전 여행지</h2>
       <StyledSecondSection>
         <StyledImg>
