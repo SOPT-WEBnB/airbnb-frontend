@@ -52,7 +52,7 @@ function Room() {
 
   return (
     <StyledRoom>
-      <RoomHeader />
+      <RoomHeader id={roomInfo.id} like={roomInfo.like} />
       <img src={roomInfo.image} />
       <RoomInfo {...roomInfo} />
       <RoomFooter {...roomInfo} />
