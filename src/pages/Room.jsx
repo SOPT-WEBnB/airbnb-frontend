@@ -71,7 +71,7 @@ function Room() {
                 </button>
                 <div>새로운 위시리스트 만들기</div>
               </StyledButtonWrapper>
-              <MiniWishListInfo list={wishListInfo} closeModal={() => setIsModalOpen(false)} />
+              <MiniWishListInfo roomID={id} list={wishListInfo} closeModal={() => setIsModalOpen(false)} />
             </StyledExistingWishList>
           ) : (
             <StyledNewWishList>

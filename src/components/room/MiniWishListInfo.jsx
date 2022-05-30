@@ -3,10 +3,11 @@ import { client } from 'libs/api';
 import { toastState } from 'stores/toast';
 import styled from 'styled-components';
 
-function MiniWishListInfo({ list, closeModal }) {
+function MiniWishListInfo({ roomID, list, closeModal }) {
   const messageHandler = useSetRecoilState(toastState);
-  const addToWishList = async (id, title, like) => {
-    await client.patch(`/wish/${id}`, {
+
+  const addToWishList = async (title, like) => {
+    await client.patch(`/wish/${roomID}`, {
       like: !like,
     });
     closeModal();
@@ -18,7 +19,7 @@ function MiniWishListInfo({ list, closeModal }) {
     <StyledMiniWishListInfo>
       <StyledMiniCategoryInfo>
         {list.map(({ id, image, title, like }) => (
-          <li key={id} onClick={() => addToWishList(id, title, like)}>
+          <li key={id} onClick={() => addToWishList(title, like)}>
             <img src={image} />
             <span>{title}</span>
           </li>
