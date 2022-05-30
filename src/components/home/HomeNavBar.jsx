@@ -1,15 +1,10 @@
 import styled from 'styled-components';
 import { IcWish, IcTravel, IcSearch, IcMessage, IcProfile } from 'assets';
 import { useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import React from 'react';
 
-function NavBar() {
+function HomeNavBar() {
   const navigate = useNavigate();
-  const [isActive, setIsActive] = useState(true);
-
-  function NavHandle() {
-    setIsActive(!setIsActive);
-  }
 
   return (
     <StyledFooter>
@@ -18,37 +13,17 @@ function NavBar() {
         <span>둘러보기</span>
       </StyledNavToggle>
 
-      {isActive ? (
-        <>
-          <StyledNavToggle
-            onClick={() => {
-              NavHandle();
-              navigate(`/wishlist`);
-            }}>
-            <IcWish />
-            <span>위시리스트</span>
-          </StyledNavToggle>
-          <StyledNavActive>
-            <IcTravel />
-            <span>여행</span>
-          </StyledNavActive>
-        </>
-      ) : (
-        <>
-          <StyledNavActive>
-            <IcWish />
-            <span>위시리스트</span>
-          </StyledNavActive>
-          <StyledNavToggle
-            onClick={() => {
-              NavHandle();
-              navigate(`/`);
-            }}>
-            <IcTravel />
-            <span>여행</span>
-          </StyledNavToggle>
-        </>
-      )}
+      <StyledNavToggle
+        onClick={() => {
+          navigate(`/wishlist`);
+        }}>
+        <IcWish />
+        <span>위시리스트</span>
+      </StyledNavToggle>
+      <StyledNavActive>
+        <IcTravel />
+        <span>여행</span>
+      </StyledNavActive>
 
       <StyledNavToggle>
         <IcMessage />
@@ -62,7 +37,7 @@ function NavBar() {
   );
 }
 
-export default React.memo(NavBar);
+export default React.memo(HomeNavBar);
 
 const StyledFooter = styled.footer`
   position: sticky;

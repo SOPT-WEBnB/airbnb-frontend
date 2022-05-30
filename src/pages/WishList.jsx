@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import WishListInfo from 'components/wishlist/WishListInfo';
-import NavBar from 'components/common/NavBar';
+import WishNavBar from 'components/wishlist/WishNavBar';
+
 import WishListHeader from 'components/wishlist/WishListHeader';
 import { client } from 'libs/api';
 import styled from 'styled-components';
@@ -23,7 +24,7 @@ function WishList() {
         <WishListHeader />
         <WishListInfo list={categoryList} />
       </StyledCategory>
-      <NavBar />
+      <WishNavBar />
     </>
   );
 }
