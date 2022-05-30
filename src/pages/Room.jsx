@@ -13,7 +13,7 @@ function Room() {
   const { id: roomID } = useParams();
   const [roomInfo, setRoomInfo] = useState([]);
   const [isDisabled, setDisabled] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
   const [bottomSheetTitle, setBottomSheetTitle] = useState('위시리스트');
   const [name, setName] = useState('');
   const [wishListInfo, setWishListInfo] = useState([]);
@@ -32,8 +32,11 @@ function Room() {
 
   useEffect(() => {
     getRoomInfo();
-    getWishListInfo();
   }, []);
+
+  useEffect(() => {
+    getWishListInfo();
+  }, [wishListInfo]);
 
   return (
     <StyledRoom>
@@ -65,7 +68,15 @@ function Room() {
                 }}
               />
               <div>최대 50자</div>
-              <button disabled={isDisabled}>새로 만들기</button>
+              <button
+                disabled={isDisabled}
+                onClick={async () => {
+                  await client.post('/category', { title: name, image: roomInfo.image });
+                  setBottomSheetTitle('위시리스트');
+                  setName('');
+                }}>
+                새로 만들기
+              </button>
             </StyledNewWishList>
           )}
         </BottomSheet>
