@@ -1,24 +1,25 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { client } from 'libs/api';
 import HeartButton from 'components/common/HeartButton';
 import styled from 'styled-components';
 import { icBack } from 'assets';
 
-function RoomHeader({ id, like }) {
+function RoomHeader({ id, like, openModal }) {
   const navigate = useNavigate();
-  const [isLiked, setIsLiked] = useState(like);
+
+  const cancelLike = async () => {
+    await client.patch(`/wish/${id}`, {
+      like: !like,
+    });
+  };
 
   return (
     <StyledRoomHeader>
       <button onClick={() => navigate(-1)} />
       <HeartButton
-        isLiked={isLiked}
-        toggleHeart={async () => {
-          await client.patch(`/wish/${id}`, {
-            like: !isLiked,
-          });
-          setIsLiked(!isLiked);
+        isLiked={like}
+        toggleHeart={() => {
+          like ? cancelLike() : openModal();
         }}
       />
     </StyledRoomHeader>

@@ -15,14 +15,14 @@ function Room() {
   const { id: roomID } = useParams();
   const [roomInfo, setRoomInfo] = useState([]);
   const [isDisabled, setDisabled] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [bottomSheetTitle, setBottomSheetTitle] = useState('위시리스트');
   const [name, setName] = useState('');
   const [wishListInfo, setWishListInfo] = useState([]);
   const navigate = useNavigate();
   const messageHandler = useSetRecoilState(toastState);
 
-  const createNewWishlist = async () => {
+  const createNewWishList = async () => {
     await client.post('/category', { title: name, image: roomInfo.image });
     setBottomSheetTitle('위시리스트');
     setName('');
@@ -44,7 +44,7 @@ function Room() {
 
   useEffect(() => {
     getRoomInfo();
-  }, []);
+  }, [roomInfo]);
 
   useEffect(() => {
     getWishListInfo();
@@ -52,7 +52,7 @@ function Room() {
 
   return (
     <StyledRoom>
-      <RoomHeader id={roomInfo.id} like={roomInfo.like} />
+      <RoomHeader {...roomInfo} openModal={() => setIsModalOpen(true)} />
       <img src={roomInfo.image} />
       <RoomInfo {...roomInfo} />
       <RoomFooter {...roomInfo} />
@@ -80,7 +80,7 @@ function Room() {
                 }}
               />
               <div>최대 50자</div>
-              <button disabled={isDisabled} onClick={() => createNewWishlist()}>
+              <button disabled={isDisabled} onClick={() => createNewWishList()}>
                 새로 만들기
               </button>
             </StyledNewWishList>
