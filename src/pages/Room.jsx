@@ -22,15 +22,6 @@ function Room() {
   const navigate = useNavigate();
   const messageHandler = useSetRecoilState(toastState);
 
-  const createNewWishList = async () => {
-    await client.post('/category', { title: name, image: roomInfo.image });
-    setBottomSheetTitle('위시리스트');
-    setName('');
-    setIsModalOpen(false);
-    messageHandler(`${name} 위시리스트에 저장 완료`);
-    setTimeout(() => messageHandler(''), 1500);
-  };
-
   const getRoomInfo = async () => {
     const { data } = await client.get('/wish');
     if (roomID > data.length) navigate('/');
@@ -42,6 +33,18 @@ function Room() {
     setWishListInfo(data);
   };
 
+  const createNewWishList = async () => {
+    await client.post('/category', { title: name, image: image });
+    await client.patch(`/wish/${id}`, {
+      like: !like,
+    });
+    setBottomSheetTitle('위시리스트');
+    setName('');
+    setIsModalOpen(false);
+    messageHandler(`${name} 위시리스트에 저장 완료`);
+    setTimeout(() => messageHandler(''), 1500);
+  };
+
   useEffect(() => {
     getRoomInfo();
   }, [roomInfo]);
@@ -50,10 +53,12 @@ function Room() {
     getWishListInfo();
   }, [wishListInfo]);
 
+  const { id, image, like } = roomInfo;
+
   return (
     <StyledRoom>
       <RoomHeader {...roomInfo} openModal={() => setIsModalOpen(true)} />
-      <img src={roomInfo.image} />
+      <img src={image} />
       <RoomInfo {...roomInfo} />
       <RoomFooter {...roomInfo} />
       {isModalOpen && (
@@ -66,7 +71,7 @@ function Room() {
                 </button>
                 <div>새로운 위시리스트 만들기</div>
               </StyledButtonWrapper>
-              <MiniWishListInfo list={wishListInfo} />
+              <MiniWishListInfo list={wishListInfo} closeModal={() => setIsModalOpen(false)} />
             </StyledExistingWishList>
           ) : (
             <StyledNewWishList>
@@ -80,7 +85,7 @@ function Room() {
                 }}
               />
               <div>최대 50자</div>
-              <button disabled={isDisabled} onClick={() => createNewWishList()}>
+              <button disabled={isDisabled} onClick={() => createNewWishList(id, like)}>
                 새로 만들기
               </button>
             </StyledNewWishList>
