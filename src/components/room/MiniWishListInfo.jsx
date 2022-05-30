@@ -48,10 +48,10 @@ const StyledMiniCategoryInfo = styled.div`
   }
 
   li > span {
-    height: 1.7rem;
     font-weight: 600;
     font-size: 1.4rem;
     line-height: 1.68rem;
+    word-break: keep-all;
   }
 
   img {
