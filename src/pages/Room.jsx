@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { toastState } from 'stores/toast';
 import { client } from 'libs/api';
@@ -9,56 +9,44 @@ import RoomFooter from 'components/room/RoomFooter';
 import BottomSheet from 'components/room/BottomSheet';
 import MiniWishListInfo from 'components/room/MiniWishListInfo';
 import styled from 'styled-components';
-import { icPlus } from 'assets';
+import { icPlus, imgRoom } from 'assets';
 
 function Room() {
-  const { id: roomID } = useParams();
-  const [roomInfo, setRoomInfo] = useState([]);
+  const { id } = useParams();
   const [isDisabled, setDisabled] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bottomSheetTitle, setBottomSheetTitle] = useState('위시리스트');
-  const [name, setName] = useState('');
+  const [wishListName, setWishListName] = useState('');
   const [wishListInfo, setWishListInfo] = useState([]);
-  const navigate = useNavigate();
   const messageHandler = useSetRecoilState(toastState);
-
-  const getRoomInfo = async () => {
-    const { data } = await client.get('/wish');
-    if (roomID > data.length) navigate('/');
-    setRoomInfo(data[roomID - 1]);
-  };
+  const location = useLocation();
+  const roomInfo = location.state;
 
   const getWishListInfo = async () => {
-    const { data } = await client.get('/category');
-    setWishListInfo(data);
+    const { data } = await client.get('/wish');
+    setWishListInfo(data.data);
   };
 
   const createNewWishList = async () => {
-    await client.post('/category', { title: name });
+    await client.post('/wish', { name: name });
     await client.patch(`/wish/${id}`, {
-      like: !like,
+      like: !roomInfo.like,
     });
     setBottomSheetTitle('위시리스트');
-    setName('');
+    setWishListName('');
     setIsModalOpen(false);
     messageHandler(`${name} 위시리스트에 저장 완료`);
     setTimeout(() => messageHandler(''), 1500);
   };
 
   useEffect(() => {
-    getRoomInfo();
-  }, [roomInfo]);
-
-  useEffect(() => {
     getWishListInfo();
   }, [wishListInfo]);
-
-  const { id, image, like } = roomInfo;
 
   return (
     <StyledRoom>
       <RoomHeader {...roomInfo} openModal={() => setIsModalOpen(true)} />
-      <img src={image} />
+      <img src={imgRoom} />
       <RoomInfo {...roomInfo} />
       <RoomFooter {...roomInfo} />
       {isModalOpen && (
@@ -71,21 +59,21 @@ function Room() {
                 </button>
                 <div>새로운 위시리스트 만들기</div>
               </StyledButtonWrapper>
-              <MiniWishListInfo roomID={id} list={wishListInfo} closeModal={() => setIsModalOpen(false)} />
+              <MiniWishListInfo roomID={roomInfo._id} list={wishListInfo} closeModal={() => setIsModalOpen(false)} />
             </StyledExistingWishList>
           ) : (
             <StyledNewWishList>
               <input
-                value={name}
+                value={wishListName}
                 placeholder="최대 50자"
                 maxLength="50"
                 onChange={(e) => {
-                  setName(e.target.value);
+                  setWishListName(e.target.value);
                   setDisabled(e.target.value.length === 0 ? true : false);
                 }}
               />
               <div>최대 50자</div>
-              <button disabled={isDisabled} onClick={() => createNewWishList(id, like)}>
+              <button disabled={isDisabled} onClick={() => createNewWishList(roomInfo._id, roomInfo.like)}>
                 새로 만들기
               </button>
             </StyledNewWishList>
