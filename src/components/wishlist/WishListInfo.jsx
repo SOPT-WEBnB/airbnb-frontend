@@ -8,14 +8,14 @@ function WishListInfo({ list }) {
   return (
     <StyledWishListInfo>
       <StyledCategoryInfo>
-        {list.map(({ id, image, title }) => (
+        {list.map(({ _id, name }) => (
           <li
-            key={id}
+            key={_id}
             onClick={() => {
-              navigate(`/wish/${title}`);
+              navigate(`/wish/${_id}`);
             }}>
-            <img src={image ?? imgRoom} />
-            <span>{title}</span>
+            <img src={imgRoom} />
+            <span>{name}</span>
           </li>
         ))}
       </StyledCategoryInfo>
