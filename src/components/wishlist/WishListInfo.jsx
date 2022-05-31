@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { imgRoom } from 'assets';
 
 function WishListInfo({ list }) {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function WishListInfo({ list }) {
             onClick={() => {
               navigate(`/wish/${title}`);
             }}>
-            <img src={image} />
+            <img src={image ?? imgRoom} />
             <span>{title}</span>
           </li>
         ))}

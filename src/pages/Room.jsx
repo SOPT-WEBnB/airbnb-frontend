@@ -34,7 +34,7 @@ function Room() {
   };
 
   const createNewWishList = async () => {
-    await client.post('/category', { title: name, image: image });
+    await client.post('/category', { title: name });
     await client.patch(`/wish/${id}`, {
       like: !like,
     });
