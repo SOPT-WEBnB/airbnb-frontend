@@ -2,6 +2,7 @@ import { useSetRecoilState } from 'recoil';
 import { client } from 'libs/api';
 import { toastState } from 'stores/toast';
 import styled from 'styled-components';
+import { imgRoom } from 'assets';
 
 function MiniWishListInfo({ roomID, list, closeModal }) {
   const messageHandler = useSetRecoilState(toastState);
@@ -18,10 +19,10 @@ function MiniWishListInfo({ roomID, list, closeModal }) {
   return (
     <StyledMiniWishListInfo>
       <StyledMiniCategoryInfo>
-        {list.map(({ id, image, title, like }) => (
-          <li key={id} onClick={() => addToWishList(title, like)}>
-            <img src={image} />
-            <span>{title}</span>
+        {list.map(({ id, name, like }) => (
+          <li key={id} onClick={() => addToWishList(name, like)}>
+            <img src={imgRoom} />
+            <span>{name}</span>
           </li>
         ))}
       </StyledMiniCategoryInfo>
