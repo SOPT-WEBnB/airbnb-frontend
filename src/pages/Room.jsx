@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
+import { toastState } from 'stores/toast';
 import { client } from 'libs/api';
 import RoomHeader from 'components/room/RoomHeader';
 import RoomInfo from 'components/room/RoomInfo';
 import RoomFooter from 'components/room/RoomFooter';
 import BottomSheet from 'components/room/BottomSheet';
+import MiniWishListInfo from 'components/room/MiniWishListInfo';
 import styled from 'styled-components';
 import { icPlus } from 'assets';
-import MiniWishListInfo from 'components/room/MiniWishListInfo';
 
 function Room() {
   const { id: roomID } = useParams();
@@ -18,6 +20,7 @@ function Room() {
   const [name, setName] = useState('');
   const [wishListInfo, setWishListInfo] = useState([]);
   const navigate = useNavigate();
+  const messageHandler = useSetRecoilState(toastState);
 
   const getRoomInfo = async () => {
     const { data } = await client.get('/wish');
@@ -30,15 +33,32 @@ function Room() {
     setWishListInfo(data);
   };
 
+  const createNewWishList = async () => {
+    await client.post('/category', { title: name });
+    await client.patch(`/wish/${id}`, {
+      like: !like,
+    });
+    setBottomSheetTitle('위시리스트');
+    setName('');
+    setIsModalOpen(false);
+    messageHandler(`${name} 위시리스트에 저장 완료`);
+    setTimeout(() => messageHandler(''), 1500);
+  };
+
   useEffect(() => {
     getRoomInfo();
+  }, [roomInfo]);
+
+  useEffect(() => {
     getWishListInfo();
-  }, []);
+  }, [wishListInfo]);
+
+  const { id, image, like } = roomInfo;
 
   return (
     <StyledRoom>
-      <RoomHeader />
-      <img src={roomInfo.image} />
+      <RoomHeader {...roomInfo} openModal={() => setIsModalOpen(true)} />
+      <img src={image} />
       <RoomInfo {...roomInfo} />
       <RoomFooter {...roomInfo} />
       {isModalOpen && (
@@ -51,7 +71,7 @@ function Room() {
                 </button>
                 <div>새로운 위시리스트 만들기</div>
               </StyledButtonWrapper>
-              <MiniWishListInfo list={wishListInfo} />
+              <MiniWishListInfo roomID={id} list={wishListInfo} closeModal={() => setIsModalOpen(false)} />
             </StyledExistingWishList>
           ) : (
             <StyledNewWishList>
@@ -65,7 +85,9 @@ function Room() {
                 }}
               />
               <div>최대 50자</div>
-              <button disabled={isDisabled}>새로 만들기</button>
+              <button disabled={isDisabled} onClick={() => createNewWishList(id, like)}>
+                새로 만들기
+              </button>
             </StyledNewWishList>
           )}
         </BottomSheet>

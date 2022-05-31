@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { imgRoom } from 'assets';
 
 function WishListInfo({ list }) {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function WishListInfo({ list }) {
             onClick={() => {
               navigate(`/wish/${title}`);
             }}>
-            <img src={image} />
+            <img src={image ?? imgRoom} />
             <span>{title}</span>
           </li>
         ))}
@@ -26,6 +27,7 @@ export default WishListInfo;
 
 const StyledWishListInfo = styled.div`
   padding: 0 2.2rem;
+  padding-bottom: 1.6rem;
   gap: 1.4rem;
 `;
 
@@ -43,10 +45,10 @@ const StyledCategoryInfo = styled.div`
   }
 
   li > span {
-    height: 1.7rem;
     font-weight: 600;
     font-size: 1.4rem;
     line-height: 1.68rem;
+    word-break: keep-all;
   }
 
   img {
