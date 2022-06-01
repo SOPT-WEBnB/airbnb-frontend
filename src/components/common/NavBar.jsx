@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { IcWish, IcTravel, IcSearch, IcMessage, IcProfile } from 'assets';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 function NavBar({ isActive }) {
   const navigate = useNavigate();
@@ -21,20 +22,14 @@ function NavBar({ isActive }) {
             <IcWish />
             <span>위시리스트</span>
           </StyledNavToggle>
-          <StyledNavActive
-            onClick={() => {
-              navigate(`/`);
-            }}>
+          <StyledNavActive>
             <IcTravel />
             <span>여행</span>
           </StyledNavActive>
         </>
       ) : (
         <>
-          <StyledNavActive
-            onClick={() => {
-              navigate(`/wishlist`);
-            }}>
+          <StyledNavActive>
             <IcWish />
             <span>위시리스트</span>
           </StyledNavActive>
@@ -60,7 +55,7 @@ function NavBar({ isActive }) {
   );
 }
 
-export default NavBar;
+export default React.memo(NavBar);
 
 const StyledFooter = styled.footer`
   position: sticky;
