@@ -28,14 +28,14 @@ function Room() {
   };
 
   const createNewWishList = async () => {
-    await client.post('/wish', { name: name });
-    await client.patch(`/wish/${id}`, {
-      like: !roomInfo.like,
-    });
+    await client.post('/wish', { name: wishListName });
+    // await client.patch(`/wish/room/${id}`, {
+    //   like: !roomInfo.like,
+    // });
     setBottomSheetTitle('위시리스트');
     setWishListName('');
     setIsModalOpen(false);
-    messageHandler(`${name} 위시리스트에 저장 완료`);
+    messageHandler(`${wishListName} 위시리스트에 저장 완료`);
     setTimeout(() => messageHandler(''), 1500);
   };
 
