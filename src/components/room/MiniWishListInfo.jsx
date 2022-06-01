@@ -1,11 +1,25 @@
+import { useSetRecoilState } from 'recoil';
+import { client } from 'libs/api';
+import { toastState } from 'stores/toast';
 import styled from 'styled-components';
 
-function MiniWishListInfo({ list }) {
+function MiniWishListInfo({ roomID, list, closeModal }) {
+  const messageHandler = useSetRecoilState(toastState);
+
+  const addToWishList = async (title, like) => {
+    await client.patch(`/wish/${roomID}`, {
+      like: !like,
+    });
+    closeModal();
+    messageHandler(`${title} 위시리스트에 저장 완료`);
+    setTimeout(() => messageHandler(''), 1500);
+  };
+
   return (
     <StyledMiniWishListInfo>
       <StyledMiniCategoryInfo>
-        {list.map(({ id, image, title }) => (
-          <li key={id}>
+        {list.map(({ id, image, title, like }) => (
+          <li key={id} onClick={() => addToWishList(title, like)}>
             <img src={image} />
             <span>{title}</span>
           </li>
@@ -31,13 +45,14 @@ const StyledMiniCategoryInfo = styled.div`
     display: flex;
     align-items: center;
     gap: 1.6rem;
+    cursor: pointer;
   }
 
   li > span {
-    height: 1.7rem;
     font-weight: 600;
     font-size: 1.4rem;
     line-height: 1.68rem;
+    word-break: keep-all;
   }
 
   img {
