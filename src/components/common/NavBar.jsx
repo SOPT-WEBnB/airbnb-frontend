@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import { IcWish, IcTravel, IcSearch, IcMessage, IcProfile } from 'assets';
 import { useNavigate } from 'react-router-dom';
-import { useRef } from 'react';
 
-function NavBar() {
+function NavBar({ isActive }) {
   const navigate = useNavigate();
-  const isActive = useRef(true);
 
   return (
     <StyledFooter>
@@ -14,21 +12,17 @@ function NavBar() {
         <span>둘러보기</span>
       </StyledNavToggle>
 
-      {isActive.current ? (
+      {isActive ? (
         <>
           <StyledNavToggle
             onClick={() => {
-              isActive.current = false;
               navigate(`/wishlist`);
-              console.log(`in true-wish: ${isActive.current}`);
             }}>
             <IcWish />
             <span>위시리스트</span>
           </StyledNavToggle>
           <StyledNavActive
             onClick={() => {
-              isActive.current = true;
-              console.log(`in true-home: ${isActive.current}`);
               navigate(`/`);
             }}>
             <IcTravel />
@@ -39,17 +33,13 @@ function NavBar() {
         <>
           <StyledNavActive
             onClick={() => {
-              isActive.current = false;
               navigate(`/wishlist`);
-              console.log(`in false-wish: ${isActive.current}`);
             }}>
             <IcWish />
             <span>위시리스트</span>
           </StyledNavActive>
           <StyledNavToggle
             onClick={() => {
-              isActive.current = true;
-              console.log(`in false-home: ${isActive.current}`);
               navigate(`/`);
             }}>
             <IcTravel />

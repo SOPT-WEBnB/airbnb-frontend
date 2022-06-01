@@ -6,11 +6,12 @@ import styled from 'styled-components';
 function Home() {
   const location = useLocation();
   const state = location.state;
+  const isActive = true;
 
   return (
     <StyledHome>
       <HomeInfo roomInfo={state} />
-      <NavBar key={`inHome-${state}`} />
+      <NavBar isActive={isActive} />
     </StyledHome>
   );
 }

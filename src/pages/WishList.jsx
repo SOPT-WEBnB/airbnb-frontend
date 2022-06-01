@@ -18,13 +18,15 @@ function WishList() {
     getCategoryList();
   }, []);
 
+  const isActive = false;
+
   return (
     <>
       <StyledCategory>
         <WishListHeader />
         <WishListInfo list={categoryList} />
       </StyledCategory>
-      <NavBar key={`inWish-${categoryList}`} />
+      <NavBar isActive={isActive} />
     </>
   );
 }
