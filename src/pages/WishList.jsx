@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import WishListInfo from 'components/wishlist/WishListInfo';
-import NavBar from 'components/common/NavBar';
-
-import WishListHeader from 'components/wishlist/WishListHeader';
 import { client } from 'libs/api';
+import NavBar from 'components/common/NavBar';
+import WishListInfo from 'components/wishlist/WishListInfo';
+import WishListHeader from 'components/wishlist/WishListHeader';
 import styled from 'styled-components';
 
 function WishList() {
