@@ -8,13 +8,13 @@ import WishDetail from 'components/wish/WishDetail';
 import { useNavigate } from 'react-router-dom';
 
 function Wish() {
-  const { category } = useParams();
+  const { id } = useParams();
   const [wishDetail, setWishDetail] = useState([]);
   const navigate = useNavigate();
 
   const getWishDetail = async () => {
-    const { data } = await client.get('/wish');
-    setWishDetail(data);
+    const { data } = await client.get(`/wish/${id}`);
+    setWishDetail(data.data);
   };
 
   useEffect(() => {
@@ -24,8 +24,8 @@ function Wish() {
   return (
     <StyledWish>
       <button onClick={() => navigate(-1)} />
-      <WishHeader category={category} />
-      <WishDetail detail={wishDetail} setWishDetail={setWishDetail} />
+      <WishHeader category={wishDetail.name} />
+      <WishDetail detail={wishDetail.rooms ?? []} setWishDetail={setWishDetail} />
     </StyledWish>
   );
 }

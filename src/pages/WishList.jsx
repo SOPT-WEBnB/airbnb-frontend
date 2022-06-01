@@ -10,8 +10,8 @@ function WishList() {
   const [categoryList, setCategoryList] = useState([]);
 
   const getCategoryList = async () => {
-    const { data } = await client.get('/category');
-    setCategoryList(data);
+    const { data } = await client.get('/wish');
+    setCategoryList(data.data);
   };
 
   useEffect(() => {

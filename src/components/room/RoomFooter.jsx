@@ -1,20 +1,22 @@
+import { imgRoom } from 'assets';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import { toastState } from 'stores/toast';
 import styled from 'styled-components';
 
-function RoomFooter({ image, price, title, host }) {
+function RoomFooter({ price, name, host }) {
   const navigate = useNavigate();
   const messageHandler = useSetRecoilState(toastState);
+  const image = imgRoom;
 
   return (
     <StyledRoomFooter>
       <div>
-        <span>₩{price?.toLocaleString()}</span> / 박
+        <span>₩{price.toLocaleString()}</span> / 박
       </div>
       <button
         onClick={() => {
-          navigate('/', { state: { image, title, host } });
+          navigate('/', { state: { image, name, host } });
           messageHandler('예약이 완료되었습니다.');
           setTimeout(() => messageHandler(''), 1500);
         }}>

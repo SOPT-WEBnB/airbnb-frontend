@@ -8,7 +8,7 @@ function FirstSection({ roomInfo }) {
       {roomInfo ? (
         <StyledIsBooked>
           <img src={roomInfo.image} />
-          <p>{roomInfo.title}</p>
+          <p>{roomInfo.name}</p>
           <span>{roomInfo.host} 님이 호스팅 하는 집 전체</span>
         </StyledIsBooked>
       ) : (

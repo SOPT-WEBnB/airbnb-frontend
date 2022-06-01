@@ -1,11 +1,11 @@
 import { icCalendar, icMedal, icPin } from 'assets';
 import styled from 'styled-components';
 
-function RoomInfo({ title, host }) {
+function RoomInfo({ name, host }) {
   return (
     <StyledRoomInfo>
       <StyledFirstSection>
-        <h1>{title}</h1>
+        <h1>{name}</h1>
         <div>4.8 · 후기 46 · 슈퍼호스트</div>
         <div>Seoul, Korea</div>
       </StyledFirstSection>

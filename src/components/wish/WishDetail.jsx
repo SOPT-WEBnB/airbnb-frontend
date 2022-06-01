@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import HeartButton from 'components/common/HeartButton';
 import { client } from 'libs/api';
 import styled from 'styled-components';
+import { imgRoom } from 'assets';
 
 function WishDetail({ detail, setWishDetail }) {
   const navigate = useNavigate();
@@ -25,16 +26,16 @@ function WishDetail({ detail, setWishDetail }) {
 
   return (
     <StyledWishDetail>
-      {detail.map(({ id, image, title, price, like }) => (
-        <li key={id} onClick={() => navigate(`/room/${id}`)}>
+      {detail.map(({ _id, name, price, like, host }) => (
+        <li key={_id} onClick={() => navigate(`/wish/room/${_id}`, { state: { name, price, like, host } })}>
           <StyledDetailCard>
             <div>
-              <img src={image} />
+              <img src={imgRoom} />
               <StyledHeartButton>
-                <HeartButton isLiked={like} toggleHeart={() => toggleHeart(id, like)} />
+                <HeartButton isLiked={like} toggleHeart={() => toggleHeart(_id, like)} />
               </StyledHeartButton>
             </div>
-            <span>{title}</span>
+            <span>{name}</span>
             <div>
               <span>₩{price.toLocaleString()}</span>
               <span>/</span>
