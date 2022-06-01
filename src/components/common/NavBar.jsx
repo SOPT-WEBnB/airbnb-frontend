@@ -1,15 +1,11 @@
 import styled from 'styled-components';
 import { IcWish, IcTravel, IcSearch, IcMessage, IcProfile } from 'assets';
 import { useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
+import { useRef } from 'react';
 
 function NavBar() {
   const navigate = useNavigate();
-  const [isActive, setIsActive] = useState(true);
-
-  function NavHandle() {
-    setIsActive(!setIsActive);
-  }
+  const isActive = useRef(true);
 
   return (
     <StyledFooter>
@@ -18,30 +14,42 @@ function NavBar() {
         <span>둘러보기</span>
       </StyledNavToggle>
 
-      {isActive ? (
+      {isActive.current ? (
         <>
           <StyledNavToggle
             onClick={() => {
-              NavHandle();
+              isActive.current = false;
               navigate(`/wishlist`);
+              console.log(`in true-wish: ${isActive.current}`);
             }}>
             <IcWish />
             <span>위시리스트</span>
           </StyledNavToggle>
-          <StyledNavActive>
+          <StyledNavActive
+            onClick={() => {
+              isActive.current = true;
+              console.log(`in true-home: ${isActive.current}`);
+              navigate(`/`);
+            }}>
             <IcTravel />
             <span>여행</span>
           </StyledNavActive>
         </>
       ) : (
         <>
-          <StyledNavActive>
+          <StyledNavActive
+            onClick={() => {
+              isActive.current = false;
+              navigate(`/wishlist`);
+              console.log(`in false-wish: ${isActive.current}`);
+            }}>
             <IcWish />
             <span>위시리스트</span>
           </StyledNavActive>
           <StyledNavToggle
             onClick={() => {
-              NavHandle();
+              isActive.current = true;
+              console.log(`in false-home: ${isActive.current}`);
               navigate(`/`);
             }}>
             <IcTravel />
@@ -62,7 +70,7 @@ function NavBar() {
   );
 }
 
-export default React.memo(NavBar);
+export default NavBar;
 
 const StyledFooter = styled.footer`
   position: sticky;

@@ -1,7 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import HomeInfo from 'components/home/HomeInfo';
-import HomeNavBar from 'components/home/HomeNavBar';
-
+import NavBar from 'components/common/NavBar';
 import styled from 'styled-components';
 
 function Home() {
@@ -11,7 +10,7 @@ function Home() {
   return (
     <StyledHome>
       <HomeInfo roomInfo={state} />
-      <HomeNavBar />
+      <NavBar key={`inHome-${state}`} />
     </StyledHome>
   );
 }
