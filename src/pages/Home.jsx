@@ -10,7 +10,7 @@ function Home() {
   return (
     <StyledHome>
       <HomeInfo roomInfo={state} />
-      <NavBar />
+      <NavBar category="home" />
     </StyledHome>
   );
 }

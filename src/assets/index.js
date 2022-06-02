@@ -1,9 +1,9 @@
 export { default as icHand } from './icons/ic_hand.svg';
-export { default as icTravel } from './icons/ic_travel.svg';
-export { default as icWish } from './icons/ic_wish.svg';
-export { default as icSearch } from './icons/ic_search.svg';
-export { default as icMessage } from './icons/ic_message.svg';
-export { default as icProfile } from './icons/ic_profile.svg';
+export { ReactComponent as IcSearch } from './icons/ic_search.svg';
+export { ReactComponent as IcTravel } from './icons/ic_travel.svg';
+export { ReactComponent as IcProfile } from './icons/ic_profile.svg';
+export { ReactComponent as IcMessage } from './icons/ic_message.svg';
+export { ReactComponent as IcWish } from './icons/ic_wish.svg';
 export { default as imgChuncheon } from './images/img_chuncheon.svg';
 export { default as imgSokcho } from './images/img_sokcho.svg';
 export { default as imgDaejeon } from './images/img_daejeon.svg';
