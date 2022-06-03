@@ -11,7 +11,6 @@ function MiniWishListInfo({ roomID, list, closeModal }) {
     await client.post(`/wish/${roomID}`, {
       like: !like,
     });
-    console.log(like);
     closeModal();
     messageHandler(`${title} 위시리스트에 저장 완료`);
     setTimeout(() => messageHandler(''), 1500);

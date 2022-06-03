@@ -21,10 +21,6 @@ function Room() {
   const messageHandler = useSetRecoilState(toastState);
   const location = useLocation();
   const roomInfo = location.state;
-  // const props = location;
-
-  // console.log(roomInfo);
-  // console.log(props);
 
   const getWishListInfo = async () => {
     const { data } = await client.get('/wish');
@@ -36,7 +32,6 @@ function Room() {
     await client.post(`/wish/${id}`, {
       like: !roomInfo.like,
     });
-    console.log(roomInfo.like);
     setBottomSheetTitle('위시리스트');
     setWishListName('');
     setIsModalOpen(false);
