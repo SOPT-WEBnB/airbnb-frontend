@@ -7,9 +7,9 @@ import { imgRoom } from 'assets';
 function MiniWishListInfo({ roomID, list, closeModal }) {
   const messageHandler = useSetRecoilState(toastState);
 
-  const addToWishList = async (title, like) => {
+  const addToWishList = async (title) => {
     await client.post(`/wish/${roomID}`, {
-      like: !like,
+      roomId: roomID,
     });
     closeModal();
     messageHandler(`${title} 위시리스트에 저장 완료`);
