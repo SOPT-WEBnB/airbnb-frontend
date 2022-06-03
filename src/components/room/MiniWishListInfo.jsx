@@ -8,9 +8,10 @@ function MiniWishListInfo({ roomID, list, closeModal }) {
   const messageHandler = useSetRecoilState(toastState);
 
   const addToWishList = async (title, like) => {
-    await client.patch(`/wish/${roomID}`, {
+    await client.post(`/wish/${roomID}`, {
       like: !like,
     });
+    console.log(like);
     closeModal();
     messageHandler(`${title} 위시리스트에 저장 완료`);
     setTimeout(() => messageHandler(''), 1500);

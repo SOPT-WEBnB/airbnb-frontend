@@ -21,6 +21,10 @@ function Room() {
   const messageHandler = useSetRecoilState(toastState);
   const location = useLocation();
   const roomInfo = location.state;
+  // const props = location;
+
+  // console.log(roomInfo);
+  // console.log(props);
 
   const getWishListInfo = async () => {
     const { data } = await client.get('/wish');
@@ -29,9 +33,10 @@ function Room() {
 
   const createNewWishList = async () => {
     await client.post('/wish', { name: wishListName });
-    // await client.patch(`/wish/room/${id}`, {
-    //   like: !roomInfo.like,
-    // });
+    await client.post(`/wish/${id}`, {
+      like: !roomInfo.like,
+    });
+    console.log(roomInfo.like);
     setBottomSheetTitle('위시리스트');
     setWishListName('');
     setIsModalOpen(false);
@@ -59,7 +64,7 @@ function Room() {
                 </button>
                 <div>새로운 위시리스트 만들기</div>
               </StyledButtonWrapper>
-              <MiniWishListInfo roomID={roomInfo._id} list={wishListInfo} closeModal={() => setIsModalOpen(false)} />
+              <MiniWishListInfo roomID={id} list={wishListInfo} closeModal={() => setIsModalOpen(false)} />
             </StyledExistingWishList>
           ) : (
             <StyledNewWishList>
